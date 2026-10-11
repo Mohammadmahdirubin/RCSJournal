@@ -632,7 +632,7 @@ if(target){
     .trim()
     .toUpperCase();
 
-  if(records[key]){
+  if(records[key] || revokedCertificates[key]){
 
     document.getElementById("code").value =
       key;

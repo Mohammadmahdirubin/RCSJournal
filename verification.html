@@ -312,16 +312,6 @@ const records = {
     doc:"assets/verification/letters/shahram-hemmat-zadeh.pdf"
   },
 
-  "RLS-2026-MAN-8Q4K7": {
-    name:"محمدعلی نوروزی",
-    role:"کارشناس بخش‌های فارسی و انگلیسی نشریه مطالعات زبان روسی",
-    en:"Mohammad Ali Norouzi",
-    ru:"Мохаммад Али Норузи",
-    ruRole:"Специалист персидского и английского разделов журнала «Исследования по русскому языку»",
-    enRole:"Specialist for the Persian and English Sections of Russian Language Studies",
-    doc:"assets/verification/letters/mohammad-ali-norouzi.pdf"
-  },
-
   "RLS-2026-MF-7N4K2": {
     name:"مهرنوش فیروزی",
     role:"کارشناس بخش روسی نشریه مطالعات زبان روسی",
@@ -485,6 +475,16 @@ const records = {
 };
 
 
+/* Отозванные документы: QR-код сохраняет возможность проверки статуса. */
+const revokedCertificates = {
+  "RLS-2026-MAN-8Q4K7": {
+    fa: "گواهینامه به‌علت عدم همکاری در تاریخ ۱۰/۰۷/۱۴۰۵ باطل اعلام می‌شود.",
+    en: "This certificate is declared revoked due to non-cooperation, effective 10/07/1405 (Iranian calendar).",
+    ru: "Настоящее свидетельство аннулировано в связи с отсутствием сотрудничества с 10.07.1405 по иранскому календарю."
+  }
+};
+
+
 /* =========================
    تابع استعلام
    ========================= */
@@ -508,6 +508,28 @@ function verify(){
 
   error.classList.remove("show");
   result.classList.remove("show");
+
+  const revoked = revokedCertificates[code];
+  if (revoked) {
+    result.innerHTML =
+      '<div style="color:#9b2226;font-weight:800;font-size:20px">✕ گواهینامه باطل شده است</div>' +
+      '<div class="verify-section verify-fa" dir="rtl" lang="fa">' +
+        '<h3>وضعیت گواهینامه</h3><p>' + revoked.fa + '</p>' +
+        '<div><span class="label">کد استعلام:</span> <span dir="ltr">' + code + '</span></div>' +
+      '</div>' +
+      '<div class="verify-section verify-en" dir="ltr" lang="en">' +
+        '<h3>Certificate Status: REVOKED</h3><p>' + revoked.en + '</p>' +
+        '<div><span class="label">Verification Code:</span> ' + code + '</div>' +
+      '</div>' +
+      '<div class="verify-section verify-ru" dir="ltr" lang="ru">' +
+        '<h3>Статус свидетельства: АННУЛИРОВАНО</h3><p>' + revoked.ru + '</p>' +
+        '<div><span class="label">Код проверки:</span> ' + code + '</div>' +
+      '</div>';
+    result.style.background = "#fff1f1";
+    result.style.borderColor = "#e4b7b9";
+    result.classList.add("show");
+    return;
+  }
 
   if(!r){
 

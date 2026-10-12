@@ -954,3 +954,79 @@ footer .rls-footer-official-logos{opacity:.94}
 .citation-table tbody th{vertical-align:top;text-align:left;white-space:normal;}
 .citation-table td{vertical-align:top;}
 @media(max-width:560px){.citation-table{min-width:600px;}.citation-table th:first-child{width:125px;}.citation-table th:last-child,.citation-table td:last-child{width:90px;}}
+
+
+/* Mobile overflow protection for article listings and article content */
+@media (max-width: 700px) {
+  .section,
+  .section > .container,
+  .section .container,
+  #rls-article-list,
+  .article-record,
+  .article-record > *,
+  .article-layout,
+  .article-layout > *,
+  .article-layout .content,
+  .content > *,
+  .page-hero .container {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .article-record,
+  .article-record h2,
+  .article-record p,
+  .article-record span,
+  .article-record strong,
+  .article-record a,
+  .article-record .article-title-translation,
+  .article-record .authors,
+  .article-record .article-actions,
+  .article-layout .content,
+  .article-layout .content p,
+  .article-layout .content li,
+  .article-layout .content a,
+  .article-layout .content h1,
+  .article-layout .content h2,
+  .article-layout .content h3,
+  .page-hero h1,
+  .page-hero p {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .article-record .meta-grid,
+  .article-record .meta-grid > div,
+  .article-record .article-actions,
+  .article-record .article-actions > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .article-record .article-actions {
+    justify-content: flex-start;
+  }
+
+  .article-record .article-actions .button {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .article-layout .content img,
+  .article-layout .content iframe,
+  .article-layout .content video {
+    max-width: 100%;
+  }
+
+  .article-layout .content pre,
+  .article-layout .content code {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .table-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}

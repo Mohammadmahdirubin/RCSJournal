@@ -512,7 +512,8 @@ const records = {
     ru:"Захра Седги",
     ruRole:"Специалист по переводу с русского на персидский и с персидского на русский",
     enRole:"Russian–Persian Translation Specialist",
-    doc:"assets/verification/letters/zahra-sedghi.pdf"
+    doc:"assets/verification/letters/zahra-sedghi.pdf",
+    certificate:true
   }
 };
 
@@ -585,8 +586,19 @@ function verify(){
 
   const russianName = r.ru || r.en;
 
+  const isCertificate = r.certificate === true;
+  const verifiedMessage = isCertificate
+    ? '✓ گواهینامه در سامانه تأیید اصالت شد / Свидетельство подтверждено / Certificate authenticity verified'
+    : '✓ نامه در سامانه ثبت شده است / Документ зарегистрирован / Document verified';
+  const documentLabelFa = isCertificate ? 'گواهینامه ثبت‌شده:' : 'نامه همکاری:';
+  const documentLabelEn = isCertificate ? 'Certificate:' : 'Collaboration Letter:';
+  const documentLabelRu = isCertificate ? 'Свидетельство:' : 'Письмо о сотрудничестве:';
+  const documentLinkFa = isCertificate ? 'مشاهده گواهینامه' : 'مشاهده نامه ثبت‌شده';
+  const documentLinkEn = isCertificate ? 'View certificate' : 'View registered letter';
+  const documentLinkRu = isCertificate ? 'Просмотреть свидетельство' : 'Просмотреть зарегистрированное письмо';
+
   result.innerHTML =
-    '<div class="verified">✓ نامه در سامانه ثبت شده است / Документ зарегистрирован / Document verified</div>' +
+    '<div class="verified">' + verifiedMessage + '</div>' +
 
     '<div class="verify-section verify-fa" dir="rtl" lang="fa">' +
       '<h3>اطلاعات فارسی</h3>' +
@@ -609,9 +621,9 @@ function verify(){
 
     (r.doc ? (
       '<div class="doc">' +
-      '<div><span class="label">نامه همکاری:</span> <a href="' + r.doc + '?v=20260928-' + encodeURIComponent(code) + '" target="_blank" rel="noopener">مشاهده نامه ثبت‌شده</a></div>' +
-      '<div dir="ltr" lang="en"><span class="label">Collaboration Letter:</span> <a href="' + r.doc + '?v=20260928-' + encodeURIComponent(code) + '" target="_blank" rel="noopener">View registered letter</a></div>' +
-      '<div dir="ltr" lang="ru"><span class="label">Письмо о сотрудничестве:</span> <a href="' + r.doc + '?v=20260928-' + encodeURIComponent(code) + '" target="_blank" rel="noopener">Просмотреть зарегистрированное письмо</a></div>' +
+      '<div><span class="label">' + documentLabelFa + '</span> <a href="' + r.doc + '?v=20261012-' + encodeURIComponent(code) + '" target="_blank" rel="noopener">' + documentLinkFa + '</a></div>' +
+      '<div dir="ltr" lang="en"><span class="label">' + documentLabelEn + '</span> <a href="' + r.doc + '?v=20261012-' + encodeURIComponent(code) + '" target="_blank" rel="noopener">' + documentLinkEn + '</a></div>' +
+      '<div dir="ltr" lang="ru"><span class="label">' + documentLabelRu + '</span> <a href="' + r.doc + '?v=20261012-' + encodeURIComponent(code) + '" target="_blank" rel="noopener">' + documentLinkRu + '</a></div>' +
       '</div>'
     ) : '');
 

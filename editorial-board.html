@@ -243,39 +243,25 @@ align-items:stretch
 .board-subsection-title{margin-top:26px;margin-bottom:10px}
  .university-logo-caption{margin-top:6px;font-weight:700;font-size:13px;text-align:center;color:var(--accent)}
 
-/* قاب مستطیلی طلایی سلطنتی — فقط عکس محمدمهدی روبین در صفحه فارسی */
+
+/* Exact ornate gold frame for Mohammadmahdi Rubin only; frame and photo zoom together */
 .board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo{
-  border:2px solid #d5ad4e;
-  outline:1px solid #a97920;
-  outline-offset:4px;
-  box-shadow:0 0 0 2px #f6e5a3,0 3px 10px rgba(104,72,18,.18);
   position:relative;
   overflow:visible;
 }
 .board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo::before{
   content:"";
   position:absolute;
-  inset:-6px;
-  border:1px solid #c69b3a;
-  box-shadow:inset 0 0 0 2px rgba(255,232,154,.9);
+  inset:-16px;
+  background-image:url("https://raw.githubusercontent.com/Mohammadmahdirubin/RLS/main/Ornate%20Antique%20Gold%20Baroque%20Frame.png");
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:100% 100%;
   pointer-events:none;
   z-index:22;
-  background:
-    radial-gradient(circle,#f5df91 0 2px,transparent 2.7px) left top/10px 10px no-repeat,
-    radial-gradient(circle,#f5df91 0 2px,transparent 2.7px) right top/10px 10px no-repeat,
-    radial-gradient(circle,#f5df91 0 2px,transparent 2.7px) left bottom/10px 10px no-repeat,
-    radial-gradient(circle,#f5df91 0 2px,transparent 2.7px) right bottom/10px 10px no-repeat,
-    linear-gradient(90deg,#9e6c19,#f6e2a0,#b8862b) center top/40px 2px no-repeat,
-    linear-gradient(90deg,#9e6c19,#f6e2a0,#b8862b) center bottom/40px 2px no-repeat;
 }
 .board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo::after{
-  content:"";
-  position:absolute;
-  inset:5px;
-  border:1px solid #f0d98d;
-  box-shadow:inset 0 0 0 1px rgba(153,105,24,.6);
-  pointer-events:none;
-  z-index:22;
+  content:none;
 }
 .board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo:hover{
   z-index:30;
@@ -283,8 +269,9 @@ align-items:stretch
   transform-origin:center center;
 }
 .board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo:hover img{
-  transform:none;
+  transform:none !important;
   object-fit:contain !important;
+  object-position:center;
   background:#fff;
 }
 </style>

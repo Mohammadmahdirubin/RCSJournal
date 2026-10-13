@@ -244,35 +244,45 @@ align-items:stretch
  .university-logo-caption{margin-top:6px;font-weight:700;font-size:13px;text-align:center;color:var(--accent)}
 
 
-/* Exact ornate gold frame for Mohammadmahdi Rubin only; frame and photo zoom together */
+/* Lightweight, responsive gold frame for Mohammadmahdi Rubin only */
 .board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo{
   position:relative;
   overflow:visible;
+  isolation:isolate;
 }
 .board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo::before{
   content:"";
   position:absolute;
-  inset:-16px;
-  background-image:url("https://raw.githubusercontent.com/Mohammadmahdirubin/RLS/main/Ornate%20Antique%20Gold%20Baroque%20Frame.png");
+  inset:-10px;
+  background-image:url("/Ornate%20Antique%20Gold%20Baroque%20Frame.png");
   background-position:center;
   background-repeat:no-repeat;
   background-size:100% 100%;
   pointer-events:none;
-  z-index:22;
+  z-index:2;
 }
 .board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo::after{
   content:none;
 }
+/* Keep desktop hover zoom modest so the framed photo stays in the layout */
 .board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo:hover{
   z-index:30;
-  transform:scale(3);
+  transform:scale(1.25);
   transform-origin:center center;
 }
 .board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo:hover img{
   transform:none !important;
   object-fit:contain !important;
   object-position:center;
-  background:#fff;
+}
+/* On phones, never enlarge beyond the viewport */
+@media (max-width: 700px){
+  .board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo::before{
+    inset:-4px;
+  }
+  .board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo:hover{
+    transform:none !important;
+  }
 }
 </style>
 <style>.selected-positions{width:100%;box-sizing:border-box;margin:16px 0 22px;padding:20px 24px;border:1px solid #cfdde6;border-radius:12px;background:linear-gradient(135deg,#f8fbfd,#eef6fa);box-shadow:0 6px 18px rgba(30,70,90,.08)}.selected-positions>strong{display:block;margin-bottom:14px;font-size:1.08rem}.selected-positions .membership-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 28px;margin:0;padding:0;list-style:none}.selected-positions .membership-list li{margin:0;padding:8px 12px;border-inline-start:3px solid var(--accent);line-height:1.75;background:rgba(255,255,255,.55);border-radius:6px}@media(max-width:760px){.selected-positions{padding:16px}.selected-positions .membership-list{grid-template-columns:1fr}}</style>

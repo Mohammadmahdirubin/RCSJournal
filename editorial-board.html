@@ -247,8 +247,24 @@ align-items:stretch
 .board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo{
   outline:1px solid #b9974b;
   outline-offset:4px;
-  box-shadow:0 0 0 2px rgba(185,151,75,.16), inset 0 0 0 1px #ead9a2;
+  box-shadow:0 0 0 2px rgba(185,151,75,.14), inset 0 0 0 1px #ead9a2;
   border-color:#b9974b;
+}
+.board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo::before{
+  content:"";
+  position:absolute;
+  inset:-5px;
+  pointer-events:none;
+  z-index:3;
+  background:
+    linear-gradient(#b9974b,#b9974b) left top/12px 1px no-repeat,
+    linear-gradient(#b9974b,#b9974b) left top/1px 12px no-repeat,
+    linear-gradient(#b9974b,#b9974b) right top/12px 1px no-repeat,
+    linear-gradient(#b9974b,#b9974b) right top/1px 12px no-repeat,
+    linear-gradient(#b9974b,#b9974b) left bottom/12px 1px no-repeat,
+    linear-gradient(#b9974b,#b9974b) left bottom/1px 12px no-repeat,
+    linear-gradient(#b9974b,#b9974b) right bottom/12px 1px no-repeat,
+    linear-gradient(#b9974b,#b9974b) right bottom/1px 12px no-repeat;
 }
 .board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo::after{
   content:"";

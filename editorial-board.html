@@ -244,14 +244,14 @@ align-items:stretch
  .university-logo-caption{margin-top:6px;font-weight:700;font-size:13px;text-align:center;color:var(--accent)}
 
 
-/* Exact frame fitted to the photo; scoped to Mohammadmahdi Rubin only */
-.board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo{
+/* Gold frame applied to every editorial-board profile photo */
+.board-profile .board-photo{
   position:relative;
   overflow:visible;
   isolation:isolate;
   box-sizing:border-box;
 }
-.board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo img{
+.board-profile .board-photo img{
   width:100% !important;
   height:100% !important;
   object-fit:cover !important;
@@ -260,7 +260,7 @@ align-items:stretch
   transform:none !important;
   z-index:1;
 }
-.board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo::before{
+.board-profile .board-photo::before{
   content:"";
   position:absolute;
   inset:0;
@@ -271,25 +271,25 @@ align-items:stretch
   pointer-events:none;
   z-index:3;
 }
-.board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo::after{
+.board-profile .board-photo::after{
   content:none;
 }
 /* The frame and portrait zoom together, at 2x on desktop and mobile */
-.board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo:hover,
-.board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo:active{
+.board-profile .board-photo:hover,
+.board-profile .board-photo:active{
   z-index:30;
   transform:scale(2);
   transform-origin:center center;
 }
-.board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo:hover img,
-.board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo:active img{
+.board-profile .board-photo:hover img,
+.board-profile .board-photo:active img{
   transform:none !important;
   object-fit:cover !important;
   background:transparent !important;
 }
 @media (max-width:700px){
-  .board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo:hover,
-  .board-profile:has(.board-photo img[src="../1789329812647.jpg"]) .board-photo:active{
+  .board-profile .board-photo:hover,
+  .board-profile .board-photo:active{
     transform:scale(2);
   }
 }

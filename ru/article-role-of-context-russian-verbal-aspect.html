@@ -157,10 +157,8 @@
 (function(){
   var id='role-of-context-russian-verbal-aspect',el=document.querySelector('[data-rls-click-counter="'+id+'"]');
   if(!el)return;
-  fetch('https://rlsj.goatcounter.com/counter/'+encodeURIComponent('/articles/'+id)+'.json',{credentials:'omit',cache:'no-store'})
-    .then(function(r){if(!r.ok)throw new Error();return r.json()})
-    .then(function(d){var n=d&&d.count!=null?String(d.count):'0';el.querySelector('.counter-value').textContent=n.replace(/,/g,'٬');el.title='Количество кликов «Открыть статью»'})
-    .catch(function(){el.querySelector('.counter-value').textContent='0'});
-})();
+  function readCount(path){return fetch('https://rlsj.goatcounter.com/counter/'+encodeURIComponent(path)+'.json',{credentials:'omit',cache:'no-store'}).then(function(r){if(r.status===404)return 0;if(!r.ok)throw new Error('counter '+r.status);return r.json();}).then(function(d){if(typeof d==='number')return d;var v=d&&d.count!=null?String(d.count):'0';return Number(v.replace(/[^0-9]/g,''))||0;});}
+  Promise.all([readCount('/articles/'+id),readCount('/article-click-'+id)]).then(function(counts){var total=counts[0]+counts[1];el.querySelector('.counter-value').textContent=String(total).replace(/\B(?=(\d{3})+(?!\d))/g,'٬');el.title='Общее число зарегистрированных просмотров статьи';}).catch(function(){el.querySelector('.counter-value').textContent='—';});
+})();;
 </script></body>
 </html>

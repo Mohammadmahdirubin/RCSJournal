@@ -146,4 +146,45 @@ window.RLS_ARTICLES = [
     "slug": "challenges-russian-technical-military-terminology",
     "sourceLanguage": "en"
   }
+  ,{
+    "id": "fate-family-human-values-don-stories",
+    "number": 4,
+    "status": "published",
+    "issue": "1/1",
+    "type": {"fa":"مقاله پژوهشی","en":"Research Article","ru":"Научная статья"},
+    "title": {
+      "fa": "سرنوشت خانواده و ارزش‌های انسانی در «داستان‌های دُن» میخائیل شولوخوف",
+      "en": "The Fate of the Family and Human Values in Mikhail Sholokhov’s Don Stories",
+      "ru": "Судьба семьи и общечеловеческие ценности в «Донских рассказах» Михаила Шолохова"
+    },
+    "sourceLanguage": "fa",
+    "author": "Parvaneh Radandish; Mohsen Beigi",
+    "authorGiven": "Parvaneh; Mohsen",
+    "authorFamily": "Radandish; Beigi",
+    "orcid": "0000-0002-8152-2059; 0009-0002-0296-7170",
+    "language": "fa",
+    "affiliation": {"fa":"","en":"","ru":""},
+    "received": "",
+    "accepted": "2026/10/09",
+    "online": "2026/10/09",
+    "volume": "1",
+    "issueNumber": "1",
+    "firstPage": "39",
+    "lastPage": "58",
+    "pdf": "Radandish-Beigi-2026-The-Fate-of-the-Family-and-Human-Values-in-Mikhail-Sholokhovs-Don-Stories.pdf",
+    "keywords": {
+      "fa": "شولوخوف؛ داستان‌های دُن؛ جنگ داخلی؛ خانواده؛ قزاق‌های دُن‌نشین؛ ارزش‌های انسانی؛ رئالیسم",
+      "en": "Mikhail Sholokhov; Don Stories; Russian Civil War; Family; Human Values; Realism",
+      "ru": "Михаил Шолохов; Донские рассказы; Гражданская война; Семья; Общечеловеческие ценности; Реализм"
+    },
+    "doi": "",
+    "license": "",
+    "abstract": {
+      "fa": "میخائیل شولوخوف در «داستان‌های دُن» تصویری از فروپاشی خانواده‌های قزاق در جنگ داخلی روسیه ارائه می‌دهد. این مقاله با رویکرد توصیفی-تحلیلی نشان می‌دهد که جنگ چگونه اعضای یک خانواده را به جبهه‌های متقابل می‌کشاند و هم‌زمان می‌تواند زمینه‌ساز ایثار، گذشت و عشق به همنوع یا نفرت و خشونت شود. خانواده در این داستان‌ها بازتابی از سرنوشت ملت روسیه در بحران تاریخی است.",
+      "en": "This article examines the fate of families and human values in Mikhail Sholokhov’s Don Stories against the background of the Russian Civil War. Through descriptive-analytical reading, it explores how conflict divides Cossack families while revealing both compassion and sacrifice and the destructive consequences of hatred and fanaticism.",
+      "ru": "В статье рассматривается судьба семьи и общечеловеческих ценностей в «Донских рассказах» Михаила Шолохова на фоне Гражданской войны в России. На основе описательно-аналитического подхода показано, как конфликт раскалывает казачьи семьи и раскрывает как сострадание и самопожертвование, так и разрушительные последствия ненависти и фанатизма."
+    },
+    "href": "article-fate-family-human-values-don-stories.html",
+    "slug": "fate-family-human-values-don-stories"
+  }
 ];

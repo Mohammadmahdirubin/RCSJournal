@@ -102,16 +102,15 @@
 </div></aside></div></div></section></main>
 <footer></footer><script src="assets/script.js?v=20260926ltr2"></script><script>
 (function(){
-  var id='ai-supported-multimodal-russian-language-learning';
-  var el=document.querySelector('[data-rls-click-counter="'+id+'"]');
+  var id='ai-supported-multimodal-russian-language-learning',el=document.querySelector('[data-rls-click-counter="'+id+'"]');
   if(!el)return;
-  fetch('https://rlsj.goatcounter.com/counter/'+encodeURIComponent('/articles/'+id)+'.json',{credentials:'omit',cache:'no-store'})
-    .then(function(r){if(!r.ok)throw new Error('counter '+r.status);return r.json();})
-    .then(function(data){
-      var raw=data&&data.count!=null?String(data.count):'0';
-      el.querySelector('.counter-value').textContent=raw.replace(/,/g,'٬');
-      el.setAttribute('title','تعداد کلیک‌های «مشاهده مقاله»');
-    })
-    .catch(function(){el.querySelector('.counter-value').textContent='0';});
-})();
+  function readCount(path){
+    return fetch('https://rlsj.goatcounter.com/counter/'+encodeURIComponent(path)+'.json',{credentials:'omit',cache:'no-store'})
+      .then(function(r){if(r.status===404)return 0;if(!r.ok)throw new Error('counter '+r.status);return r.json();})
+      .then(function(d){if(typeof d==='number')return d;var v=d&&d.count!=null?String(d.count):'0';return Number(v.replace(/[^0-9]/g,''))||0;});
+  }
+  Promise.all([readCount('/articles/'+id),readCount('/article-click-'+id)])
+    .then(function(counts){var total=counts[0]+counts[1];el.querySelector('.counter-value').textContent=String(total).replace(/\B(?=(\d{3})+(?!\d))/g,'٬');el.title='تعداد بازدیدهای ثبت‌شده مقاله';})
+    .catch(function(){el.querySelector('.counter-value').textContent='—';});
+})();;
 </script></body></html>

@@ -33,22 +33,24 @@ window.renderRLSArticleList = function(targetId, language) {
     number.appendChild(numberStrong);
     addText(card, 'div', (a.type && a.type[lang]) || '', 'article-type');
     addText(card, 'h2', (a.title && a.title[lang]) || '');
-    var authorLine = document.createElement('p');
-    authorLine.className = 'authors';
-    var authorStrong = document.createElement('strong');
-    authorStrong.textContent = (a.author || '').replace(/;\s*/g, ', ');
-    authorLine.appendChild(authorStrong);
-    var affiliation = a.affiliation && a.affiliation[lang];
-    if (affiliation) authorLine.appendChild(document.createTextNode(' · ' + affiliation));
-    card.appendChild(authorLine);
+    if (a.author) {
+      var authorLine = document.createElement('p');
+      authorLine.className = 'authors';
+      var authorStrong = document.createElement('strong');
+      authorStrong.textContent = a.author.replace(/;\s*/g, ', ');
+      authorLine.appendChild(authorStrong);
+      var affiliation = a.affiliation && a.affiliation[lang];
+      if (affiliation) authorLine.appendChild(document.createTextNode(' · ' + affiliation));
+      card.appendChild(authorLine);
+    }
     var meta = document.createElement('div');
     meta.className = 'meta-grid';
     [
       [labels.received, a.received],
       [labels.accepted, a.accepted],
       [labels.online, a.online],
-      [labels.issue, (lang === 'fa' ? 'دوره ' + (a.volume||'1') + '، شماره ' + (a.issueNumber||'1') : lang === 'en' ? 'Volume ' + (a.volume||'1') + ', Issue ' + (a.issueNumber||'1') : 'Том ' + (a.volume||'1') + ', выпуск ' + (a.issueNumber||'1'))],
-      [labels.pages, (a.firstPage && a.lastPage) ? a.firstPage + '–' + a.lastPage : '—']
+      [labels.issue, (a.volume || a.issueNumber) ? (lang === 'fa' ? 'دوره ' + (a.volume||'1') + '، شماره ' + (a.issueNumber||'1') : lang === 'en' ? 'Volume ' + (a.volume||'1') + ', Issue ' + (a.issueNumber||'1') : 'Том ' + (a.volume||'1') + ', выпуск ' + (a.issueNumber||'1')) : ''],
+      [labels.pages, (a.firstPage && a.lastPage) ? a.firstPage + '–' + a.lastPage : '']
     ].forEach(function(pair) {
       if (!pair[1]) return;
       var item = document.createElement('div');

@@ -192,7 +192,7 @@ window.RLS_ARTICLES = [
   "number": 5,
   "status": "published",
   "type": {
-    "fa": "مقاله پژوهشی",
+    "fa": "پژوهشی",
     "en": "Research Article",
     "ru": "Научная статья"
   },

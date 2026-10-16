@@ -1,80 +1,64 @@
 document.addEventListener("DOMContentLoaded", function () {
-  var articles = (window.RLS_ARTICLES || []).filter(function (x) {
-    return x && x.status === "published";
-  });
-  var extra = window.RLS_LEGACY_STATS || { rejected: 2, pending: 4 };
-  var received = articles.length + (extra.rejected || 0) + (extra.pending || 0);
-  var accepted = articles.length;
-  var rejected = extra.rejected || 0;
-  var resolved = accepted + rejected;
-  var rate = resolved ? Math.round(accepted * 100 / resolved) : 0;
-
   var lang = document.documentElement.lang || "en";
-  var metricValues = { received: received, accepted: accepted, rejected: rejected, pending: extra.pending || 0, rate: rate };
-  Object.keys(metricValues).forEach(function (key) {
-    document.querySelectorAll("[data-metric=\"" + key + "\"]").forEach(function (el) {
-      var value = metricValues[key];
-      el.textContent = key === "rate" ? (lang === "fa" ? faDigits(value) + "٪" : value + "%") : labelValue(value, lang);
-    });
-  });
-
+  var received = 11, pending = 5, accepted = 5, rejected = 1;
+  var resolved = accepted + rejected;
+  var rate = Math.round(accepted * 100 / resolved);
   function faDigits(value) {
-    return String(value).replace(/\d/g, function (d) {
-      return "۰۱۲۳۴۵۶۷۸۹"[Number(d)];
+    return String(value).replace(/\d/g, function (d) { return "۰۱۲۳۴۵۶۷۸۹"[Number(d)]; });
+  }
+  function fmt(value) { return lang === "fa" ? faDigits(value) : String(value); }
+  var values = { received: received, accepted: accepted, rejected: rejected, pending: pending, rate: rate };
+  Object.keys(values).forEach(function (key) {
+    document.querySelectorAll('[data-metric="' + key + '"]').forEach(function (el) {
+      el.textContent = key === "rate" ? (lang === "fa" ? faDigits(rate) + "٪" : rate + "%") : fmt(values[key]);
+    });
+  });
+  var notes = {
+    fa: "از مجموع ۱۱ مقاله دریافتی، ۵ مقاله پذیرفته شده، ۵ مقاله در حال بررسی است و ۱ مقاله رد شده است.",
+    en: "Of 11 manuscripts received, 5 have been accepted, 5 are under review, and 1 has been rejected.",
+    ru: "Из 11 полученных статей 5 приняты, 5 находятся на рассмотрении и 1 отклонена."
+  };
+  document.querySelectorAll(".stat-note").forEach(function (el) {
+    if (/۱۰ مقاله دریافتی|10 received articles|10 полученных статей|سال ۱۴۰۵ تاکنون|In 2026, 10 articles|В 2026 году получено 10 статей/.test(el.textContent)) el.textContent = notes[lang] || notes.en;
+  });
+  var svgs = document.querySelectorAll(".metrics-svg");
+  if (svgs[0]) {
+    var svg = svgs[0];
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    svg.setAttribute("viewBox", "0 0 760 340");
+    var ns = "http://www.w3.org/2000/svg";
+    function node(tag, attrs, text) {
+      var el = document.createElementNS(ns, tag);
+      Object.keys(attrs || {}).forEach(function (k) { el.setAttribute(k, attrs[k]); });
+      if (text !== undefined) el.textContent = text;
+      svg.appendChild(el); return el;
+    }
+    var max = 12, base = 250, top = 35, height = base - top;
+    node("line",{x1:90,y1:top,x2:90,y2:base,class:"chart-axis"});
+    node("line",{x1:90,y1:base,x2:700,y2:base,class:"chart-axis"});
+    [0,3,6,9,12].forEach(function(v){
+      var y = base - v / max * height;
+      node("line",{x1:90,y1:y,x2:700,y2:y,class:"chart-gridline"});
+      node("text",{x:70,y:y+5,class:"chart-label","text-anchor":"end"},fmt(v));
+    });
+    var labels = lang === "fa" ? ["دریافتی","در حال بررسی","ردشده","پذیرفته‌شده"] : lang === "ru" ? ["Получено","На рассмотрении","Отклонено","Принято"] : ["Received","Under review","Rejected","Accepted"];
+    var data = [received,pending,rejected,accepted], xs = [200,330,460,590], classes = ["bar-blue","bar-gold","bar-red","bar-green"];
+    data.forEach(function(v,i){
+      var y = base - v / max * height;
+      node("line",{x1:xs[i],y1:y,x2:xs[i],y2:base,class:"chart-bar "+classes[i]});
+      node("text",{x:xs[i],y:Math.max(22,y-10),class:"chart-label","text-anchor":"middle"},fmt(v));
+      node("text",{x:xs[i],y:base+27,class:"chart-label","text-anchor":"middle"},labels[i]);
+    });
+    node("text",{x:395,y:315,class:"chart-label","text-anchor":"middle"},lang==="fa"?"۱۴۰۵ — دوره ۱":lang==="ru"?"2026 — Том 1":"2026 — Volume 1");
+  }
+  if (svgs[1]) {
+    var svg2=svgs[1], yRate=275-(rate/100)*240;
+    var line=svg2.querySelector(".chart-line"), point=svg2.querySelector(".chart-point"), area=svg2.querySelector(".chart-area");
+    if(line){line.setAttribute("y1",yRate);line.setAttribute("y2",275);}
+    if(point)point.setAttribute("cy",yRate);
+    if(area)area.setAttribute("d","M395 "+yRate+" L395 275 L395 "+yRate);
+    svg2.querySelectorAll("text").forEach(function(el){
+      if(/^\d+%$/.test(el.textContent.trim()) || /^[۰-۹]+٪$/.test(el.textContent.trim())) el.textContent=lang==="fa"?faDigits(rate)+"٪":rate+"%";
     });
   }
-
-  function labelValue(value, lang) {
-    var n = Math.round(value * 10) / 10;
-    var s = Number.isInteger(n) ? String(n) : String(n);
-    return lang === "fa" ? faDigits(s) : s;
-  }
-
-  document.querySelectorAll(".metrics-svg").forEach(function (svg, index) {
-    if (index === 0) {
-      var max = Math.max(9, received);
-      var base = 245;
-      var top = 35;
-      var height = base - top;
-      var vals = [received, accepted, rejected];
-      var barSelectors = [".bar-blue", ".bar-green", ".bar-red"];
-
-      vals.forEach(function (value, i) {
-        var y = base - (value / max) * height;
-        var bar = svg.querySelector(barSelectors[i]);
-        if (bar) {
-          bar.setAttribute("y1", y);
-          bar.setAttribute("y2", base);
-        }
-      });
-
-      var axisLabels = Array.from(svg.querySelectorAll('text[x="70"]')).sort(function (a, b) {
-        return Number(a.getAttribute("y")) - Number(b.getAttribute("y"));
-      });
-      var axisValues = [max, max * 2 / 3, max / 3, 0];
-      axisLabels.forEach(function (el, i) {
-        if (i < axisValues.length) el.textContent = labelValue(axisValues[i], lang);
-      });
-    }
-
-    if (index === 1) {
-      var yRate = 275 - (rate / 100) * 240;
-      var line = svg.querySelector(".chart-line");
-      var point = svg.querySelector(".chart-point");
-      var area = svg.querySelector(".chart-area");
-
-      if (line) {
-        line.setAttribute("y1", yRate);
-        line.setAttribute("y2", 275);
-      }
-      if (point) point.setAttribute("cy", yRate);
-      if (area) area.setAttribute("d", "M395 " + yRate + " L395 275 L395 " + yRate);
-
-      svg.querySelectorAll("text").forEach(function (el) {
-        if (/^\d+%$/.test(el.textContent.trim()) || /^[۰-۹]+٪$/.test(el.textContent.trim())) {
-          el.textContent = lang === "fa" ? faDigits(rate) + "٪" : rate + "%";
-        }
-      });
-    }
-  });
 });

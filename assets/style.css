@@ -705,6 +705,21 @@ footer .rls-footer-official-logos{opacity:.94}
   overflow-wrap:anywhere;
 }
 .author-meta p:last-child{border-bottom:0}
+.author-card .contact-row{
+  direction:ltr!important;
+  text-align:left!important;
+  unicode-bidi:plaintext;
+}
+.author-card .contact-row.orcid-row{
+  border-bottom:1px solid var(--line)!important;
+}
+.author-card .contact-row.email-row{
+  border-bottom:0!important;
+}
+.author-card .contact-row strong{
+  display:inline-block;
+  min-width:78px;
+}
 .author-meta strong{color:var(--accent2)}
 .author-meta a{font-weight:700;color:var(--accent)}
 .author-card + .notice{

@@ -1,5 +1,104 @@
 const RLS_GOATCOUNTER_ENDPOINT='https://rlsj.goatcounter.com/count';
 const RLS_GOATCOUNTER_SCRIPT='https://gc.zgo.at/count.js';
+
+/* Central article-list renderer: keeps FA/EN/RU lists synchronized with assets/articles-data.js. */
+window.renderRLSArticleList = function(targetId, language) {
+  var target = document.getElementById(targetId);
+  var all = window.RLS_ARTICLES;
+  if (!target || !Array.isArray(all)) return;
+  var lang = (language === 'en' || language === 'ru') ? language : 'fa';
+  var labels = {
+    fa: {received:'تاریخ دریافت', accepted:'تاریخ پذیرش', online:'انتشار آنلاین', issue:'شماره', pages:'صفحات', abstract:'چکیده', keywords:'کلیدواژه‌ها', view:'مشاهده مقاله', pdf:'دانلود PDF', doi:'DOI'},
+    en: {received:'Received', accepted:'Accepted', online:'Online publication', issue:'Issue', pages:'Pages', abstract:'Abstract', keywords:'Keywords', view:'View article', pdf:'Download PDF', doi:'DOI'},
+    ru: {received:'Поступление', accepted:'Принятие', online:'Онлайн-публикация', issue:'Выпуск', pages:'Страницы', abstract:'Аннотация', keywords:'Ключевые слова', view:'Открыть статью', pdf:'Скачать PDF', doi:'DOI'}
+  }[lang];
+  var prefix = lang === 'fa' ? '' : '../';
+  var published = all.filter(function(a){ return a && a.status === 'published'; })
+    .sort(function(a,b){ return Number(a.number||0)-Number(b.number||0); });
+  var fragment = document.createDocumentFragment();
+  function addText(parent, tag, text, className) {
+    var node = document.createElement(tag);
+    if (className) node.className = className;
+    node.textContent = text || '';
+    parent.appendChild(node);
+    return node;
+  }
+  published.forEach(function(a) {
+    var card = document.createElement('article');
+    card.className = 'article-record';
+    var numberLabel = (lang === 'fa' ? 'مقاله ' : lang === 'en' ? 'Article ' : 'Статья ') + a.number;
+    var number = addText(card, 'div', '', 'article-number');
+    var numberStrong = document.createElement('strong');
+    numberStrong.textContent = numberLabel;
+    number.appendChild(numberStrong);
+    addText(card, 'div', (a.type && a.type[lang]) || '', 'article-type');
+    addText(card, 'h2', (a.title && a.title[lang]) || '');
+    var authorLine = document.createElement('p');
+    authorLine.className = 'authors';
+    var authorStrong = document.createElement('strong');
+    authorStrong.textContent = (a.author || '').replace(/;\s*/g, ', ');
+    authorLine.appendChild(authorStrong);
+    var affiliation = a.affiliation && a.affiliation[lang];
+    if (affiliation) authorLine.appendChild(document.createTextNode(' · ' + affiliation));
+    card.appendChild(authorLine);
+    var meta = document.createElement('div');
+    meta.className = 'meta-grid';
+    [
+      [labels.received, a.received],
+      [labels.accepted, a.accepted],
+      [labels.online, a.online],
+      [labels.issue, (lang === 'fa' ? 'دوره ' + (a.volume||'1') + '، شماره ' + (a.issueNumber||'1') : lang === 'en' ? 'Volume ' + (a.volume||'1') + ', Issue ' + (a.issueNumber||'1') : 'Том ' + (a.volume||'1') + ', выпуск ' + (a.issueNumber||'1'))],
+      [labels.pages, (a.firstPage && a.lastPage) ? a.firstPage + '–' + a.lastPage : '—']
+    ].forEach(function(pair) {
+      if (!pair[1]) return;
+      var item = document.createElement('div');
+      addText(item, 'span', pair[0]);
+      addText(item, 'strong', pair[1]);
+      meta.appendChild(item);
+    });
+    card.appendChild(meta);
+    var abstractText = a.abstract && a.abstract[lang];
+    if (abstractText) {
+      addText(card, 'h3', labels.abstract);
+      addText(card, 'p', abstractText);
+    }
+    var keywordText = a.keywords && a.keywords[lang];
+    if (keywordText) {
+      var kw = document.createElement('p');
+      var kwStrong = document.createElement('strong');
+      kwStrong.textContent = labels.keywords + ': ';
+      kw.appendChild(kwStrong);
+      kw.appendChild(document.createTextNode(keywordText));
+      card.appendChild(kw);
+    }
+    var actions = document.createElement('div');
+    actions.className = 'article-actions';
+    var doi = document.createElement('span');
+    doi.className = 'status';
+    doi.textContent = labels.doi + ': ' + (a.doi || (lang === 'fa' ? 'تعیین نشده' : lang === 'en' ? 'Not assigned' : 'Не присвоен'));
+    actions.appendChild(doi);
+    var page = document.createElement('a');
+    page.className = 'button secondary';
+    page.href = prefix + (a.href || ('article-' + a.id + '.html'));
+    page.textContent = labels.view;
+    actions.appendChild(page);
+    var pdfPath = a.pdf || '';
+    if (pdfPath && pdfPath.indexOf('/') < 0) pdfPath = 'articles/1/' + pdfPath;
+    if (pdfPath) {
+      var pdf = document.createElement('a');
+      pdf.className = 'button primary';
+      pdf.href = prefix + pdfPath;
+      pdf.target = '_blank';
+      pdf.rel = 'noopener';
+      pdf.textContent = labels.pdf;
+      actions.appendChild(pdf);
+    }
+    card.appendChild(actions);
+    fragment.appendChild(card);
+  });
+  target.replaceChildren(fragment);
+};
+
 const initRLS=()=>{
   // GoatCounter: count article visits under one shared path across FA/EN/RU versions.
   if(!window.goatcounter){

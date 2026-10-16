@@ -191,6 +191,9 @@ window.RLS_ARTICLES = [
   "id": "mythological-significance-water-russian-literature",
   "number": 5,
   "status": "published",
+  "issue": "1/1",
+  "volume": "1",
+  "issueNumber": "1",
   "type": {
     "fa": "پژوهشی",
     "en": "Research Article",
@@ -210,6 +213,10 @@ window.RLS_ARTICLES = [
   "language": "fa",
   "received": "2026/10/02",
   "accepted": "2026/10/16",
+  "online": "2026/10/16",
+  "firstPage": "",
+  "lastPage": "",
+  "pdf": "",
   "affiliation": {
     "fa": "کارشناسی ارشد مطالعات منطقه (آسیای مرکزی و قفقاز)، دانشگاه تهران، تهران، ایران",
     "en": "MA in Regional Studies (Central Asia and the Caucasus), University of Tehran, Tehran, Iran",

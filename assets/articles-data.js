@@ -202,7 +202,12 @@ window.RLS_ARTICLES = [
     "ru": "Мифологическое отражение воды в русской литературе: от славянских представлений о реке и море к литературному переосмыслению"
   },
   "sourceLanguage": "fa",
+  "author": "Samin Babazadeh",
+  "authorGiven": "Samin",
+  "authorFamily": "Babazadeh",
   "language": "fa",
+  "received": "2026/10/02",
+  "accepted": "2026/10/16",
   "affiliation": {
     "fa": "",
     "en": "",

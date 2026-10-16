@@ -205,13 +205,15 @@ window.RLS_ARTICLES = [
   "author": "Samin Babazadeh",
   "authorGiven": "Samin",
   "authorFamily": "Babazadeh",
+  "orcid": "0000-0001-6079-0524",
+  "email": "sm.babazade@gmail.com",
   "language": "fa",
   "received": "2026/10/02",
   "accepted": "2026/10/16",
   "affiliation": {
-    "fa": "",
-    "en": "",
-    "ru": ""
+    "fa": "کارشناسی ارشد مطالعات منطقه (آسیای مرکزی و قفقاز)، دانشگاه تهران، تهران، ایران",
+    "en": "MA in Regional Studies (Central Asia and the Caucasus), University of Tehran, Tehran, Iran",
+    "ru": "Магистр регионоведения (Центральная Азия и Кавказ), Тегеранский университет, Тегеран, Иран"
   },
   "keywords": {
     "fa": "اسطوره‌شناسی اسلاوی؛ اسطوره؛ ادبیات روسی؛ رودخانه؛ دریا؛ فولکلور؛ بازآفرینی اسطوره",

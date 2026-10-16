@@ -220,9 +220,9 @@ window.RLS_ARTICLES = [
         }
       },
       {
-        "name": {
+         "name": {
           "fa": "Н. Н. Кошкарова",
-          "en": "N. N. Kosharova",
+          "en": "N. N. Koshkarova",
           "ru": "Н. Н. Кошкарова"
         },
         "affiliation": {
@@ -246,7 +246,7 @@ window.RLS_ARTICLES = [
         }
       }
     ],
-    "author": "O. A. Solopova; N. N. Kosharova; S. Saini",
+    "author": "O. A. Solopova; N. N. Koshkarova; S. Saini",
     "affiliation": {
       "fa": "۱، ۲. دانشگاه دولتی اورال جنوبی، چلیابینسک، فدراسیون روسیه؛ ۳. دانشگاه جواهر لعل نهرو، دهلی نو، هند",
       "en": "1, 2. South Ural State University, Chelyabinsk, Russian Federation; 3. Jawaharlal Nehru University, New Delhi, India",

@@ -62,7 +62,7 @@ window.renderRLSArticleList = function(targetId, language) {
     var abstractText = a.abstract && a.abstract[lang];
     if (abstractText) {
       addText(card, 'h3', labels.abstract);
-      addText(card, 'p', abstractText);
+      addText(card, 'p', abstractText, 'article-abstract');
     }
     var keywordText = a.keywords && a.keywords[lang];
     if (keywordText) {

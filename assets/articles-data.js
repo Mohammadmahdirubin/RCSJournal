@@ -257,7 +257,7 @@ window.RLS_ARTICLES = [
     "online": "2026/10/17",
     "firstPage": "",
     "lastPage": "",
-    "pdf": "",
+    "pdf": "articles/1/Solopova-Koshkarova-Saini-2026-Teaching-Russian-at-an-Indian-University.pdf",
     "keywords": {
       "fa": "روسی به‌عنوان زبان خارجی؛ شنیدار؛ گفتار؛ خواندن؛ نوشتن؛ رویکرد ارتباطی ـ فعالیت‌محور؛ پیمایش جامعه‌زبان‌شناختی؛ انگیزش؛ هند",
       "en": "Russian as a foreign language; listening; speaking; reading; writing; communicative-activity approach; sociolinguistic survey; motivation; India",

@@ -301,7 +301,7 @@ window.RLS_ARTICLES = [
   "accepted": "2026/10/16",
   "online": "2026/10/16",
   "firstPage": "59",
-  "lastPage": "79",
+  "lastPage": "72",
   "pdf": "",
   "affiliation": {
     "fa": "کارشناسی ارشد مطالعات منطقه (آسیای مرکزی و قفقاز)، دانشگاه تهران، تهران، ایران",

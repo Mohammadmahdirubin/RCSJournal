@@ -294,7 +294,7 @@ window.RLS_ARTICLES = [
   "author": "Samin Babazadeh",
   "authorGiven": "Samin",
   "authorFamily": "Babazadeh",
-  "orcid": "0000-0001-6079-0524",
+  "orcid": "0009-0002-1639-1387",
   "email": "sm.babazade@gmail.com",
   "language": "fa",
   "received": "2026/10/02",

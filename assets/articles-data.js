@@ -302,7 +302,7 @@ window.RLS_ARTICLES = [
   "online": "2026/10/16",
   "firstPage": "59",
   "lastPage": "72",
-  "pdf": "",
+  "pdf": "articles/1/Babazadeh-2026-Mythological-Significance-of-Water-in-Russian-Literature.pdf",
   "affiliation": {
     "fa": "کارشناسی ارشد مطالعات منطقه (آسیای مرکزی و قفقاز)، دانشگاه تهران، تهران، ایران",
     "en": "MA in Regional Studies (Central Asia and the Caucasus), University of Tehran, Tehran, Iran",

@@ -46,14 +46,14 @@ window.renderRLSArticleList = function(targetId, language) {
     var meta = document.createElement('div');
     meta.className = 'meta-grid';
     [
-      [labels.received, a.received],
-      [labels.accepted, a.accepted],
-      [labels.online, a.online],
-      [labels.issue, (a.volume || a.issueNumber) ? (lang === 'fa' ? 'دوره ' + (a.volume||'1') + '، شماره ' + (a.issueNumber||'1') : lang === 'en' ? 'Volume ' + (a.volume||'1') + ', Issue ' + (a.issueNumber||'1') : 'Том ' + (a.volume||'1') + ', выпуск ' + (a.issueNumber||'1')) : ''],
-      [labels.pages, (a.firstPage && a.lastPage) ? a.firstPage + '–' + a.lastPage : '']
+      [labels.received, a.received || '—'],
+      [labels.accepted, a.accepted || '—'],
+      [labels.online, a.online || '—'],
+      [labels.issue, (a.volume || a.issueNumber) ? (lang === 'fa' ? 'دوره ' + (a.volume||'1') + '، شماره ' + (a.issueNumber||'1') : lang === 'en' ? 'Volume ' + (a.volume||'1') + ', Issue ' + (a.issueNumber||'1') : 'Том ' + (a.volume||'1') + ', выпуск ' + (a.issueNumber||'1')) : '—'],
+      [labels.pages, (a.firstPage && a.lastPage) ? a.firstPage + '–' + a.lastPage : '—']
     ].forEach(function(pair) {
-      if (!pair[1]) return;
       var item = document.createElement('div');
+      item.className = 'meta-item';
       addText(item, 'span', pair[0]);
       addText(item, 'strong', pair[1]);
       meta.appendChild(item);

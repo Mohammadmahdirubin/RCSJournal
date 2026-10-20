@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   var lang = document.documentElement.lang || "en";
-  var received = 12, pending = 3, accepted = 6, rejected = 3;
+  var received = 12, pending = 2, accepted = 6, rejected = 4;
   var resolved = accepted + rejected;
   var rate = Math.round(accepted * 100 / resolved);
   function faDigits(value) {
@@ -14,9 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
   var notes = {
-    fa: "از مجموع ۱۲ مقاله دریافتی، ۶ مقاله پذیرفته شده، ۳ مقاله در حال بررسی / تعیین‌تکلیف و ۳ مقاله رد شده است.",
-    en: "Of 12 manuscripts received, 6 have been accepted, 3 are under review / awaiting a decision, and 3 have been rejected.",
-    ru: "Из 12 полученных статей 6 приняты, 3 находятся на рассмотрении / ожидают решения и 3 отклонены."
+    fa: "از مجموع ۱۲ مقاله دریافتی، ۶ مقاله پذیرفته شده، ۲ مقاله در حال بررسی / تعیین‌تکلیف و ۴ مقاله رد شده است.",
+    en: "Of 12 manuscripts received, 6 have been accepted, 2 are under review / awaiting a decision, and 4 have been rejected.",
+    ru: "Из 12 полученных статей 6 приняты, 2 находятся на рассмотрении / ожидают решения и 4 отклонены."
   };
   document.querySelectorAll(".stat-note").forEach(function (el) {
     if (/۱۰ مقاله دریافتی|10 received articles|10 полученных статей|سال ۱۴۰۵ تاکنون|In 2026, 10 articles|В 2026 году получено 10 статей/.test(el.textContent)) el.textContent = notes[lang] || notes.en;

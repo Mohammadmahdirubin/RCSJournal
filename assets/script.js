@@ -1,4 +1,4 @@
-const RLS_GOATCOUNTER_ENDPOINT='https://rcsj.goatcounter.com/count';
+const RLS_GOATCOUNTER_ENDPOINT='https://rlsj.goatcounter.com/count';
 const RLS_GOATCOUNTER_SCRIPT='https://gc.zgo.at/count.js';
 
 /* Central article-list renderer: keeps FA/EN/RU lists synchronized with assets/articles-data.js. */

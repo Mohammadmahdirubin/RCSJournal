@@ -1,4 +1,5 @@
-# Issue 1 · شماره ۱ · Volume 1, Issue 1 (2026)
+# RCS article PDF storage · محل نگهداری فایل‌های مقالات
 
-| # | Author | File | Pages |
-|---|--------|------|-------|
+This directory is reserved for PDFs of future RCS publications. It currently contains no published article files.
+
+این پوشه برای نگهداری فایل‌های PDF مقالات آینده نشریه مطالعات روسیه و قفقاز در نظر گرفته شده است. در حال حاضر فایل مقاله منتشرشده‌ای در آن وجود ندارد.

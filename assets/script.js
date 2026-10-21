@@ -1,4 +1,4 @@
-const RLS_GOATCOUNTER_ENDPOINT='https://rlsj.goatcounter.com/count';
+const RLS_GOATCOUNTER_ENDPOINT='https://rcsj.goatcounter.com/count';
 const RLS_GOATCOUNTER_SCRIPT='https://gc.zgo.at/count.js';
 
 /* Central article-list renderer: keeps FA/EN/RU lists synchronized with assets/articles-data.js. */
@@ -98,6 +98,16 @@ window.renderRLSArticleList = function(targetId, language) {
     card.appendChild(actions);
     fragment.appendChild(card);
   });
+  if (!published.length) {
+    var emptyNotice = document.createElement('div');
+    emptyNotice.className = 'notice';
+    emptyNotice.textContent = lang === 'fa'
+      ? 'هنوز مقاله‌ای منتشر نشده است. پس از انتشار، اطلاعات مقالات در این بخش نمایش داده می‌شود.'
+      : lang === 'ru'
+        ? 'Статьи пока не опубликованы. После публикации сведения появятся в этом разделе.'
+        : 'No articles have been published yet. Article records will appear here after publication.';
+    fragment.appendChild(emptyNotice);
+  }
   target.replaceChildren(fragment);
 };
 

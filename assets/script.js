@@ -1,4 +1,5 @@
-const RLS_GOATCOUNTER_ENDPOINT='https://rlsj.goatcounter.com/count';
+// Configure an RCS-specific GoatCounter endpoint before enabling live analytics.
+const RLS_GOATCOUNTER_ENDPOINT='';
 const RLS_GOATCOUNTER_SCRIPT='https://gc.zgo.at/count.js';
 
 /* Central article-list renderer: keeps FA/EN/RU lists synchronized with assets/articles-data.js. */
@@ -121,7 +122,7 @@ const initRLS=()=>{
       }
     };
   }
-  if(!document.querySelector('script[data-rls-goatcounter]')){
+  if(RLS_GOATCOUNTER_ENDPOINT && RLS_GOATCOUNTER_SCRIPT && !document.querySelector('script[data-rls-goatcounter]')){
     var gc=document.createElement('script');
     gc.setAttribute('data-goatcounter',RLS_GOATCOUNTER_ENDPOINT);
     gc.setAttribute('data-rls-goatcounter','1');

@@ -1,7 +1,7 @@
 # RLS New Article Publishing Standard
 Version: 2026-10-14
 
-This is the standing checklist for every new article published in Russian Language Studies (RLS). Consult it before preparing or changing article pages.
+This is the standing checklist for every new article published in Russian and Caucasus Studies (RLS). Consult it before preparing or changing article pages.
 
 ## 1. Three-language completeness
 - Publish and check the article in all three site languages: Persian (root), English (`/en/`), and Russian (`/ru/`).

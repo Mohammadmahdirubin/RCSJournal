@@ -1,6 +1,6 @@
 # RLS Article Publication Standard
 
-This file is the permanent operating procedure for publishing every new scholarly article on the Russian Language Studies (RLS) website. When the journal owner supplies a manuscript PDF, follow this standard automatically; do not ask the owner to repeat the formatting and publication instructions. Ask only for essential bibliographic information that cannot be established reliably from the PDF or existing journal records.
+This file is the permanent operating procedure for publishing every new scholarly article on the Russian and Caucasus Studies (RLS) website. When the journal owner supplies a manuscript PDF, follow this standard automatically; do not ask the owner to repeat the formatting and publication instructions. Ask only for essential bibliographic information that cannot be established reliably from the PDF or existing journal records.
 
 ## 1. Reference design and source of truth
 
@@ -47,7 +47,7 @@ Complete the publication workflow end-to-end in the repository, using the PDF an
 - Use the real volume, issue, and first/last page values. Do not automatically assume every article has the same page range.
 - Use ISO dates (`YYYY-MM-DD`) for machine-readable citation metadata. Display dates in the same format used by the reference article page; do not convert or infer a date unless the source establishes it.
 - Set `citation_pdf_url` to the exact public URL of the uploaded PDF.
-- Use the journal name consistently: Persian «دوفصلنامه مطالعات زبان روسی», Russian «Исследования по русскому языку», English “Russian Language Studies”.
+- Use the journal name consistently: Persian «مطالعات روسیه و قفقاز», Russian «Исследования России и Кавказа», English “Russian and Caucasus Studies”.
 - Preserve the established navy/gold/white identity and the current desktop/mobile layout.
 - Keep the view counter in the same location and style as the current standard article pages.
 - Do not claim a change is live until the repository and, where possible, the deployed site have been checked. If deployment or caching delays are possible, say so clearly.

@@ -9,7 +9,7 @@ const langs = ["fa", "en", "ru"];
 const page = (lang, a) => lang === "fa"
   ? `article-${a.slug || a.id}.html`
   : `${lang}/article-${a.slug || a.id}.html`;
-const url = (lang, a) => `https://rlsj.ir/${page(lang, a)}`;
+const url = (lang, a) => `https://mohammadmahdirubin.github.io/RCSJournal/${page(lang, a)}`;
 const rel = lang => lang === "fa" ? "" : "../";
 
 const esc = value => String(value ?? "")
@@ -22,9 +22,9 @@ const date = (value, lang) => new Intl.DateTimeFormat(
 ).format(new Date(String(value).replace(/\//g, "-") + "T00:00:00Z"));
 
 const journalName = lang =>
-  lang === "fa" ? "دوفصلنامه مطالعات زبان روسی" :
-  lang === "ru" ? "Исследования по русскому языку" :
-  "Russian Language Studies";
+  lang === "fa" ? "مطالعات روسیه و قفقاز" :
+  lang === "ru" ? "Исследования России и Кавказа" :
+  "Russian and Caucasus Studies";
 
 const langName = lang =>
   lang === "fa" ? "فارسی" : lang === "ru" ? "русский" : "English";
@@ -71,7 +71,7 @@ function buildHead(lang, a, template) {
   const description = String(a.abstract[lang] || "").slice(0, 250);
   const sourceLanguage = a.language || a.sourceLanguage || "en";
   const citationTitle = a.title[sourceLanguage] || a.title.en || t;
-  const citationPdfUrl = `https://rlsj.ir/${lang === "fa" ? "" : lang + "/"}${path.basename(a.pdf)}`;
+  const citationPdfUrl = `https://mohammadmahdirubin.github.io/RCSJournal/${lang === "fa" ? "" : lang + "/"}${path.basename(a.pdf)}`;
   const ld = {
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
@@ -86,11 +86,11 @@ function buildHead(lang, a, template) {
       ...(a.orcid ? { sameAs: "https://orcid.org/" + a.orcid } : {})
     }],
     inLanguage: a.language || a.sourceLanguage || lang,
-    isPartOf: { "@type": "Periodical", name: j, url: "https://rlsj.ir/" },
+    isPartOf: { "@type": "Periodical", name: j, url: "https://mohammadmahdirubin.github.io/RCSJournal/" },
     pagination: a.firstPage + "-" + a.lastPage,
     url: u,
     mainEntityOfPage: { "@type": "WebPage", "@id": u },
-    encoding: { "@type": "MediaObject", contentUrl: "https://rlsj.ir/" + a.pdf, encodingFormat: "application/pdf" }
+    encoding: { "@type": "MediaObject", contentUrl: "https://mohammadmahdirubin.github.io/RCSJournal/" + a.pdf, encodingFormat: "application/pdf" }
   };
   const jsonLd = JSON.stringify(ld, null, 2);
   const assetLines = [...template.matchAll(/<(?:link[^>]+rel="stylesheet"[^>]*|script[^>]+src="[^"]+"[^>]*)>/g)]
@@ -111,7 +111,7 @@ function buildHead(lang, a, template) {
 <meta name="citation_publication_date" content="${String(a.online).replace(/\//g, "-")}">
 <meta name="citation_firstpage" content="${a.firstPage}">
 <meta name="citation_lastpage" content="${a.lastPage}">
-<meta name="citation_journal_title" content="Russian Language Studies">
+<meta name="citation_journal_title" content="Russian and Caucasus Studies">
 <meta name="citation_volume" content="${a.volume}">
 <meta name="citation_issue" content="${a.issueNumber}">
 <meta name="citation_language" content="${a.language || a.sourceLanguage || lang}">
@@ -159,7 +159,7 @@ function citationTable(a, lang, pageUrl, pdfUrl) {
   const normalizedPdf = String(pdfUrl || "").replace(/^\.\.\//, "").replace(/^\.\//, "").replace(/^\/+/, "");
   const directPdf = String(pdfUrl || "").startsWith("http")
     ? pdfUrl
-    : "https://rlsj.ir/" + normalizedPdf;
+    : "https://mohammadmahdirubin.github.io/RCSJournal/" + normalizedPdf;
   return '<div class="table-wrap citation-table-wrap"><table class="academic-table citation-table" dir="ltr"><thead><tr><th>' + labels.head[0] + '</th><th>' + labels.head[1] + '</th></tr></thead><tbody><tr><th scope="row">' + labels.pdf + '</th><td><a href="' + directPdf + '" target="_blank" rel="noopener noreferrer">' + labels.getPdf + ' ↗</a></td></tr><tr><th scope="row">' + labels.page + '</th><td><a href="' + pageUrl + '">' + labels.open + ' ↗</a></td></tr></tbody></table></div>';
 }
 
@@ -268,7 +268,7 @@ for (const a of published) {
 
     const templatePath = path.join(root,
       lang === "fa"
-        ? "article-ai-supported-multimodal-russian-language-learning.html"
+        ? "article-sample.html"
         : `${lang}/article-ai-supported-multimodal-russian-language-learning.html`
     );
 

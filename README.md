@@ -1,12 +1,12 @@
-# Russian Language Studies (RLS)
+# Russian and Caucasus Studies (RCS)
 
-Official website repository for **Russian Language Studies (RLS)** / **دوفصلنامه مطالعات زبان روسی** / **Исследования по русскому языку**.
+Official website repository for **Russian and Caucasus Studies (RCS)** / **مطالعات روسیه و قفقاز** / **Исследования России и Кавказа**.
 
 ## Website
 
 This repository contains the current multilingual static website for the journal, published through GitHub Pages and the custom domain:
 
-- https://rlsj.ir/
+- https://mohammadmahdirubin.github.io/RCSJournal/
 
 The site currently provides Persian, English, and Russian interfaces and includes journal information, editorial-board pages, publication policies, peer-review and ethics information, author guidelines, article/issue pages, submission forms, metrics, and article metadata.
 

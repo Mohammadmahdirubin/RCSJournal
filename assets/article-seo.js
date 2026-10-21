@@ -8,7 +8,7 @@
   var pubDate = document.querySelector('meta[name="citation_publication_date"]')?.content || '2026-09-17';
   var description = document.querySelector('meta[name="description"]')?.content || '';
   var articleType = lang === 'fa' ? 'مقاله پژوهشی' : lang === 'ru' ? 'Научная статья' : 'Research Article';
-  var publisherName = lang === 'fa' ? 'دوفصلنامه مطالعات زبان روسی' : lang === 'ru' ? 'Исследования русского языка' : 'Russian Language Studies';
+  var publisherName = lang === 'fa' ? 'مطالعات روسیه و قفقاز' : lang === 'ru' ? 'Исследования русского языка' : 'Russian and Caucasus Studies';
   function addMeta(attr, key, value) {
     if (!value || document.head.querySelector('meta[' + attr + '=\"' + key + '\"]')) return;
     var m = document.createElement('meta'); m.setAttribute(attr, key); m.content = value; document.head.appendChild(m);

@@ -204,10 +204,10 @@ const initRLS=()=>{
     banner.className='rls-site-banner';
     const bannerLink=document.createElement('a');
     bannerLink.href=langUrls[lang];
-    bannerLink.setAttribute('aria-label',lang==='ru'?'Исследования по русскому языку':lang==='en'?'Russian Language Studies':'دوفصلنامه مطالعات زبان روسی');
+    bannerLink.setAttribute('aria-label',lang==='ru'?'Исследования России и Кавказа':lang==='en'?'Russian and Caucasus Studies':'مطالعات روسیه و قفقاز');
     const image=document.createElement('img');
     image.src=asset('Banner.png');
-    image.alt=lang==='ru'?'Исследования по русскому языку':'Russian Language Studies Journal';
+    image.alt=lang==='ru'?'Исследования России и Кавказа':'Russian and Caucasus Studies Journal';
     image.loading='eager';
     image.fetchPriority='high';
     image.decoding='async';
@@ -223,7 +223,7 @@ const initRLS=()=>{
     if(!img.getAttribute('decoding')) img.setAttribute('decoding','async');
   });
 
-  const title=lang==='fa'?'دوفصلنامه مطالعات زبان روسی':lang==='en'?'Russian Language Studies':'Исследования по русскому языку';
+  const title=lang==='fa'?'مطالعات روسیه و قفقاز':lang==='en'?'Russian and Caucasus Studies':'Исследования России и Кавказа';
   const pageNames={'index.html':title,'about.html':labels.about,'editorial-board.html':labels.board,'editorial-board-fa.html':'هیئت تحریریه نشریه','editorial-policy.html':labels.policies,'peer-review.html':labels.review,'publication-ethics.html':labels.ethics,'plagiarism.html':labels.plagiarism,'conflict-of-interest.html':labels.conflict,'copyright.html':labels.copyright,'ai-policy.html':labels.ai,'data-policy.html':labels.data,'complaints.html':labels.complaints,'preservation.html':labels.preservation,'repository-policy.html':labels.repository,'persistent-identifiers.html':labels.identifiers,'publication-fees.html':labels.fees,'corrections-retractions.html':labels.corrections,'author-guidelines.html':labels.guidelines,'authors.html':labels.authorInfo,'indexing.html':labels.indexing,'articles.html':labels.articles,'issues.html':labels.issues,'archive.html':labels.archive,'journal-metrics.html':labels.metrics,'submit.html':labels.submit,'submission-success.html':lang==='fa'?'ارسال با موفقیت انجام شد':lang==='en'?'Submission received':'Отправка получена','contact.html':labels.contact,'privacy.html':labels.privacy,'open-access.html':labels.openAccess,'article-sample.html':lang==='fa'?'نمونه مقاله':lang==='en'?'Article Sample':'Образец статьи'};
   if(pageNames[file])document.title=`${pageNames[file]} | ${title}`;
 
@@ -232,7 +232,7 @@ const initRLS=()=>{
   const footer=document.querySelector('body>footer');
   const ministryLabel=lang==='fa'?'وزارت فرهنگ و ارشاد اسلامی':lang==='en'?'Ministry of Culture and Islamic Guidance':'Министерство культуры и исламской ориентации';
   const mediaLabel=lang==='fa'?'سامانه جامع رسانه‌های کشور':lang==='en'?'National Comprehensive Media System':'Национальная комплексная медиасистема';
-  const footerJournalName=lang==='ru'?'Исследования по русскому языку':lang==='en'?'Russian Language Studies (RLS)':'دوفصلنامه مطالعات زبان روسی';
+  const footerJournalName=lang==='ru'?'Исследования России и Кавказа':lang==='en'?'Russian and Caucasus Studies (RLS)':'مطالعات روسیه و قفقاز';
   if(footer){
     footer.innerHTML=`<div class="container rls-footer-inner">
       <div class="rls-footer-main">
@@ -313,7 +313,7 @@ footer .rls-footer-official-logo span{font-size:11px;font-weight:700;line-height
 
   if(inRu){
     const oldNames=['Исследования русского языка','Russian Language & Linguistics Studies','Russian Language and Linguistics Studies','Russian Language Linguistics Studies','RLLS'];
-    const correctName='Исследования по русскому языку';
+    const correctName='Исследования России и Кавказа';
     document.title=document.title.replace(/Исследования русского языка|Russian Language & Linguistics Studies|Russian Language and Linguistics Studies|Russian Language Linguistics Studies|RLLS/g,correctName);
     document.querySelectorAll('meta[content],meta[property],meta[name]').forEach(el=>{
       if(el.content)el.content=el.content.replace(/Исследования русского языка|Russian Language & Linguistics Studies|Russian Language and Linguistics Studies|Russian Language Linguistics Studies|RLLS/g,correctName);

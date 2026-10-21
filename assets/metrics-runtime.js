@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   var lang = document.documentElement.lang || "en";
-  var received = 12, pending = 2, accepted = 6, rejected = 4;
+  var received = 13, pending = 3, accepted = 6, rejected = 4;
   var resolved = accepted + rejected;
   var rate = Math.round(accepted * 100 / resolved);
   function faDigits(value) {
@@ -14,12 +14,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
   var notes = {
-    fa: "از مجموع ۱۲ مقاله دریافتی، ۶ مقاله پذیرفته شده، ۲ مقاله در حال بررسی / تعیین‌تکلیف و ۴ مقاله رد شده است.",
-    en: "Of 12 manuscripts received, 6 have been accepted, 2 are under review / awaiting a decision, and 4 have been rejected.",
-    ru: "Из 12 полученных статей 6 приняты, 2 находятся на рассмотрении / ожидают решения и 4 отклонены."
+    fa: "از مجموع ۱۳ مقاله دریافتی، ۶ مقاله پذیرفته شده، ۳ مقاله در حال بررسی / تعیین‌تکلیف و ۴ مقاله رد شده است.",
+    en: "Of 13 manuscripts received, 6 have been accepted, 3 are under review / awaiting a decision, and 4 have been rejected.",
+    ru: "Из 13 полученных статей 6 приняты, 3 находятся на рассмотрении / ожидают решения и 4 отклонены."
   };
   document.querySelectorAll(".stat-note").forEach(function (el) {
-    if (/۱۰ مقاله دریافتی|10 received articles|10 полученных статей|سال ۱۴۰۵ تاکنون|In 2026, 10 articles|В 2026 году получено 10 статей/.test(el.textContent)) el.textContent = notes[lang] || notes.en;
+    if (/مقاله دریافتی|manuscripts received|полученных статей|سال ۱۴۰۵ تاکنون|In 2026, 10 articles|В 2026 году получено 10 статей/.test(el.textContent)) el.textContent = notes[lang] || notes.en;
   });
   var svgs = document.querySelectorAll(".metrics-svg");
   if (svgs[0]) {
@@ -33,10 +33,10 @@ document.addEventListener("DOMContentLoaded", function () {
       if (text !== undefined) el.textContent = text;
       svg.appendChild(el); return el;
     }
-    var max = 12, base = 250, top = 35, height = base - top;
+    var max = 15, base = 250, top = 35, height = base - top;
     node("line",{x1:90,y1:top,x2:90,y2:base,class:"chart-axis"});
     node("line",{x1:90,y1:base,x2:700,y2:base,class:"chart-axis"});
-    [0,3,6,9,12].forEach(function(v){
+    [0,3,6,9,12,15].forEach(function(v){
       var y = base - v / max * height;
       node("line",{x1:90,y1:y,x2:700,y2:y,class:"chart-gridline"});
       node("text",{x:70,y:y+5,class:"chart-label","text-anchor":"end"},fmt(v));

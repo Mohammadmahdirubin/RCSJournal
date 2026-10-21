@@ -1,5 +1,5 @@
 {
-  "legacyRejected": 2,
-  "legacyPending": 4,
-  "notes": "Legacy non-published submissions carried forward from the journal's existing public metrics. New article records are counted automatically."
+  "legacyRejected": 0,
+  "legacyPending": 0,
+  "notes": "Fresh RCS journal setup. Metrics will be calculated from RCS submissions only."
 }

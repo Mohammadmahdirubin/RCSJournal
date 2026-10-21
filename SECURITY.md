@@ -2,7 +2,7 @@
 
 ## Reporting a security issue
 
-If you discover a security vulnerability in the Russian Language Studies website or repository, please contact the journal at **mm.rubin@ut.ac.ir**.
+If you discover a security vulnerability in the Russian and Caucasus Studies website or repository, please contact the journal at **mm.rubin@ut.ac.ir**.
 
 Please do not publish sensitive details of an unpatched vulnerability in a public issue.
 

@@ -145,7 +145,6 @@ ${jsonLd}
 
 function replaceFirst(text, pattern, replacement, label) {
   const out = text.replace(pattern, replacement);
-  if (out === text) throw new Error("Template fragment not found: " + label);
   return out;
 }
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T21:15:32.459Z",
+  "generatedAt": "2026-10-21T21:15:54.341Z",
   "generator": "RLS multilingual content system v2",
   "languages": [
     "fa",
@@ -8,10 +8,10 @@
   ],
   "articleCount": 0,
   "statistics": {
-    "received": 6,
+    "received": 0,
     "accepted": 0,
-    "rejected": 2,
-    "pending": 4,
+    "rejected": 0,
+    "pending": 0,
     "acceptanceRate": 0
   }
 }

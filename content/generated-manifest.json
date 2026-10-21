@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-10-15T11:43:35.507Z",
+  "generatedAt": "2026-10-21T21:10:31.119Z",
   "generator": "RLS multilingual content system v2",
   "languages": [
     "fa",
     "en",
     "ru"
   ],
-  "articleCount": 3,
+  "articleCount": 0,
   "statistics": {
-    "received": 9,
-    "accepted": 3,
+    "received": 6,
+    "accepted": 0,
     "rejected": 2,
     "pending": 4,
-    "acceptanceRate": 60
+    "acceptanceRate": 0
   }
 }

@@ -1000,3 +1000,26 @@ html[lang="ru"] .container {
 .site-header>.rls-site-banner img{display:block!important;width:100%!important;max-width:none!important;height:auto!important;max-height:none!important;object-fit:cover!important;object-position:center!important;margin:0!important}
 .site-header .header-inner{width:100%;box-sizing:border-box}
 @media(max-width:900px){.site-header>.rls-site-banner{width:100%!important}.site-header>.rls-site-banner img{width:100%!important;height:auto!important;max-height:none!important;object-fit:cover!important}}
+
+
+/* Unified blue-and-light-green journal theme across all pages and languages. */
+:root{
+  --paper:#f0fbf5;
+  --alt:#e2f5e9;
+  --line:#c9e5d5;
+  --soft:#d8f0e2;
+  --ink:#14243a;
+  --muted:#526b61;
+  --accent:#2563eb;
+  --accent2:#123c7a;
+  --accent3:#60a5fa;
+  --white:#ffffff;
+}
+html,body{background-color:#f0fbf5!important}
+.site-header{background:#f0fbf5!important}
+.hero{
+  background:radial-gradient(circle at 15% 15%,#f8fffb 0,#eaf8f0 48%,#eaf1fb 100%)!important;
+}
+.card,.panel,.content-card,.info-card,.stat-card,.profile-card,.board-card,.article-card{
+  background-color:#f8fffb;
+}

@@ -386,6 +386,30 @@ html.rls-mobile-mode.nav-open .site-header .main-nav>a{display:flex!important}
     updateTopButton();
   }
 
+  // Final responsive navigation override: do not depend on user-agent detection.
+  if(!document.getElementById('rcs-mobile-navigation-fix')){
+    const mobileFix=document.createElement('style');
+    mobileFix.id='rcs-mobile-navigation-fix';
+    mobileFix.textContent=`
+      @media(max-width:900px){
+        .site-header .header-inner .menu-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;position:relative!important;z-index:10002!important;flex:0 0 auto!important}
+        .site-header .header-inner .main-nav{display:none!important}
+        html.nav-open .site-header .header-inner .main-nav,
+        body.nav-open .site-header .header-inner .main-nav{
+          display:flex!important;visibility:visible!important;opacity:1!important;
+          position:absolute!important;top:100%!important;left:0!important;right:0!important;
+          width:100%!important;max-width:100%!important;max-height:calc(100dvh - 56px)!important;
+          overflow-y:auto!important;flex-direction:column!important;align-items:stretch!important;
+          justify-content:flex-start!important;gap:0!important;padding:10px 18px!important;
+          background:#faf7ec!important;z-index:10001!important;box-sizing:border-box!important
+        }
+        html.nav-open .site-header .main-nav>a,
+        body.nav-open .site-header .main-nav>a{display:flex!important;width:100%!important}
+      }
+    `;
+    document.head.appendChild(mobileFix);
+  }
+
 };
 
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initRLS);

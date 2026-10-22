@@ -7,16 +7,12 @@ document.addEventListener("DOMContentLoaded", function () {
     return String(value).replace(/\d/g, function (d) { return "۰۱۲۳۴۵۶۷۸۹"[Number(d)]; });
   }
   function fmt(value) { return lang === "fa" ? faDigits(value) : String(value); }
-  var values = { received: received, accepted: accepted, rejected: rejected, pending: pending, rate: rate };
-  Object.keys(values).forEach(function (key) {
-    document.querySelectorAll('[data-metric="' + key + '"]').forEach(function (el) {
-      el.textContent = key === "rate" ? (lang === "fa" ? faDigits(rate) + "٪" : rate + "%") : fmt(values[key]);
-    });
-  });
+  // Performance indicator cards intentionally show no numeric values.
+  document.querySelectorAll("[data-metric]").forEach(function (el) { el.textContent = "—"; });
   var notes = {
-    fa: "از مجموع ۱۳ مقاله دریافتی، ۶ مقاله پذیرفته شده، ۳ مقاله در حال بررسی / تعیین‌تکلیف و ۴ مقاله رد شده است.",
-    en: "Of 13 manuscripts received, 6 have been accepted, 3 are under review / awaiting a decision, and 4 have been rejected.",
-    ru: "Из 13 полученных статей 6 приняты, 3 находятся на рассмотрении / ожидают решения и 4 отклонены."
+    fa: "آمار تفصیلی در نمودارهای پایین صفحه نمایش داده می‌شود.",
+    en: "Detailed statistics are shown in the charts below.",
+    ru: "Подробная статистика представлена на диаграммах ниже."
   };
   document.querySelectorAll(".stat-note").forEach(function (el) {
     if (/مقاله دریافتی|manuscripts received|полученных статей|سال ۱۴۰۵ تاکنون|In 2026, 10 articles|В 2026 году получено 10 статей/.test(el.textContent)) el.textContent = notes[lang] || notes.en;

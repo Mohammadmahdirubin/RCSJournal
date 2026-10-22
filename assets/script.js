@@ -270,7 +270,35 @@ const initRLS=()=>{
   const menu=document.querySelector('.menu-btn');
   if(menu&&!menu.dataset.bound){
     menu.dataset.bound='1';
-    menu.addEventListener('click',e=>{e.preventDefault();document.documentElement.classList.toggle('nav-open');document.body.classList.toggle('nav-open');});
+    menu.setAttribute('aria-expanded','false');
+    menu.setAttribute('aria-controls','rcs-mobile-navigation');
+    if(nav) nav.id='rcs-mobile-navigation';
+    menu.addEventListener('click',e=>{
+      e.preventDefault();
+      const opening = menu.getAttribute('aria-expanded') !== 'true';
+      document.documentElement.classList.toggle('nav-open',opening);
+      document.body.classList.toggle('nav-open',opening);
+      menu.setAttribute('aria-expanded',String(opening));
+      if(nav){
+        if(opening){
+          nav.style.setProperty('display','flex','important');
+          nav.style.setProperty('position','absolute');
+          nav.style.setProperty('top','56px');
+          nav.style.setProperty('left','0');
+          nav.style.setProperty('right','0');
+          nav.style.setProperty('z-index','10000');
+          nav.style.setProperty('flex-direction','column');
+          nav.style.setProperty('align-items','stretch');
+          nav.style.setProperty('max-height','calc(100dvh - 56px)');
+          nav.style.setProperty('overflow-y','auto');
+          nav.style.setProperty('background','#faf7ec');
+          nav.style.setProperty('padding','10px 18px');
+          nav.style.setProperty('box-sizing','border-box');
+        }else{
+          ['display','position','top','left','right','z-index','flex-direction','align-items','max-height','overflow-y','background','padding','box-sizing'].forEach(p=>nav.style.removeProperty(p));
+        }
+      }
+    });
   }
 
 

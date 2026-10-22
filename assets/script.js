@@ -250,39 +250,41 @@ const initRLS=()=>{
   }
 
   const menu=document.querySelector('.menu-btn');
-  if(menu&&!menu.dataset.bound){
-    menu.dataset.bound='1';
+  if(menu && nav){
+    menu.removeAttribute('data-bound');
     menu.setAttribute('aria-expanded','false');
     menu.setAttribute('aria-controls','rcs-mobile-navigation');
-    if(nav) nav.id='rcs-mobile-navigation';
-    menu.addEventListener('click',e=>{
+    nav.id='rcs-mobile-navigation';
+    // One simple, deterministic handler: use the same nav-open class as the CSS.
+    menu.onclick=function(e){
       e.preventDefault();
-      const opening = menu.getAttribute('aria-expanded') !== 'true';
+      e.stopPropagation();
+      const opening=!document.documentElement.classList.contains('nav-open');
       document.documentElement.classList.toggle('nav-open',opening);
       document.body.classList.toggle('nav-open',opening);
-      menu.setAttribute('aria-expanded',String(opening));
-      if(nav){
-        if(opening){
-          nav.style.setProperty('display','flex','important');
-          nav.style.setProperty('position','absolute');
-          nav.style.setProperty('top','56px');
-          nav.style.setProperty('left','0');
-          nav.style.setProperty('right','0');
-          nav.style.setProperty('z-index','10000');
-          nav.style.setProperty('flex-direction','column');
-          nav.style.setProperty('align-items','stretch');
-          nav.style.setProperty('max-height','calc(100dvh - 56px)');
-          nav.style.setProperty('overflow-y','auto');
-          nav.style.setProperty('background','#faf7ec');
-          nav.style.setProperty('padding','10px 18px');
-          nav.style.setProperty('box-sizing','border-box');
-        }else{
-          ['display','position','top','left','right','z-index','flex-direction','align-items','max-height','overflow-y','background','padding','box-sizing'].forEach(p=>nav.style.removeProperty(p));
-        }
+      menu.setAttribute('aria-expanded',opening?'true':'false');
+      nav.style.setProperty('display',opening?'flex':'none','important');
+      if(opening){
+        nav.style.setProperty('position','absolute','important');
+        nav.style.setProperty('top','100%','important');
+        nav.style.setProperty('left','0','important');
+        nav.style.setProperty('right','0','important');
+        nav.style.setProperty('width','100%','important');
+        nav.style.setProperty('z-index','10001','important');
+        nav.style.setProperty('flex-direction','column','important');
+        nav.style.setProperty('align-items','stretch','important');
+        nav.style.setProperty('max-height','calc(100dvh - 56px)','important');
+        nav.style.setProperty('overflow-y','auto','important');
+        nav.style.setProperty('background','#faf7ec','important');
+        nav.style.setProperty('padding','10px 18px','important');
+        nav.style.setProperty('box-sizing','border-box','important');
+        nav.style.setProperty('visibility','visible','important');
+        nav.style.setProperty('opacity','1','important');
+      }else{
+        ['position','top','left','right','width','z-index','flex-direction','align-items','max-height','overflow-y','background','padding','box-sizing','visibility','opacity'].forEach(p=>nav.style.removeProperty(p));
       }
-    });
+    };
   }
-
 
     const dropdownFixStyle=document.createElement('style');
     dropdownFixStyle.textContent = `

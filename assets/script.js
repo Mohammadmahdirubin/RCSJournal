@@ -349,6 +349,16 @@ footer .rls-footer-official-logo span{font-size:11px;font-weight:700;line-height
 @media(max-width:760px){footer .rls-footer-main{grid-template-columns:1fr 1fr}footer .rls-footer-cc{align-items:flex-start}footer .rls-footer-cc *{text-align:left!important}footer .rls-footer-official-logos{gap:12px;flex-wrap:wrap}}
 @media(max-width:560px){.site-header .header-inner{min-height:56px}.site-header .header-language-switcher{flex-basis:76px;width:76px;max-width:76px;height:34px;font-size:11px}.nav-open .main-nav{top:56px;max-height:calc(100vh - 56px);padding:10px 18px}footer .rls-footer-inner{padding:20px 14px 18px}footer .rls-footer-main{grid-template-columns:1fr;gap:12px}footer .rls-email-line,footer .rls-email-line a{white-space:normal}footer .rls-footer-official-logos{gap:10px;margin-top:16px;padding-top:14px;flex-wrap:wrap}footer .rls-footer-official-logo{min-width:0}footer .rls-footer-logo-box{width:92px;height:66px}footer .rls-footer-logo-box img{max-width:82px;max-height:54px}}
 @media(orientation:landscape) and (max-width:900px){.site-header .header-inner{min-height:52px}.site-header .rls-site-banner img{height:78px!important;max-height:78px!important}.nav-open .main-nav{top:52px!important;max-height:calc(100vh - 52px)!important}}
+/* Mobile hamburger fix: override html.rls-mobile-mode .main-nav display:none!important */
+@media(max-width:900px){
+html.rls-mobile-mode.nav-open .site-header .main-nav,
+html.rls-mobile-mode body.nav-open .site-header .main-nav{
+display:flex!important;position:absolute!important;top:62px!important;left:0!important;right:0!important;width:100%!important;max-width:none!important;max-height:calc(100vh - 62px)!important;overflow-y:auto!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;background:#faf7ec!important;z-index:9999!important
+}
+html.rls-mobile-mode.nav-open .site-header .main-nav,
+html.rls-mobile-mode.nav-open .site-header .main-nav>a{display:flex!important}
+}
+@media(max-width:560px){html.rls-mobile-mode.nav-open .site-header .main-nav{top:56px!important;max-height:calc(100vh - 56px)!important}}
 #rls-back-to-top{position:fixed;right:22px;bottom:22px;width:42px;height:42px;border:1px solid rgba(139,38,53,.22);border-radius:50%;background:var(--accent,#8b2635);color:#fff;font-size:22px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s ease,visibility .2s ease,transform .2s ease,background .2s ease;z-index:9998;box-shadow:0 8px 20px rgba(36,27,29,.18)}
 #rls-back-to-top.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
 #rls-back-to-top:hover{background:var(--accent2,#5b1723)}

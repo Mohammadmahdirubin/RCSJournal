@@ -1023,3 +1023,13 @@ html,body{background-color:#f0fbf5!important}
 .card,.panel,.content-card,.info-card,.stat-card,.profile-card,.board-card,.article-card{
   background-color:#f8fffb;
 }
+
+
+/* Unified blue-and-light-green theme across all RCS pages and languages. */
+:root{--paper:#f0f9f2;--white:#fbfffc;--soft:#dff3e5;--line:#c9e3d1}
+html,body{background-color:var(--paper)!important}
+body{background:var(--paper)!important}
+.hero{background:radial-gradient(circle at 15% 15%,#fbfffc 0%,#e0f4e6 48%,#eaf1fb 100%)!important}
+.page-hero{background:linear-gradient(135deg,#eaf1fb 0%,#e0f4e6 100%)!important}
+.site-header,.rls-site-banner,.main-nav{background-color:var(--paper)}
+.notice,.board-photo,.page-cert-verify,.file-box{background-color:var(--soft)}

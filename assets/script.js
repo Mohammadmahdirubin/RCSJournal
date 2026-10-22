@@ -240,16 +240,17 @@ const initRLS=()=>{
 
   document.querySelectorAll('.dark-section').forEach(el=>el.remove());
   document.querySelectorAll('body>footer').forEach((item,index)=>{if(index>0)item.remove();});
-  const footer=document.querySelector('body>footer');
+  let footer=document.querySelector('body>footer');
+  if(!footer){ footer=document.createElement('footer'); document.body.appendChild(footer); }
   const ministryLabel=lang==='fa'?'وزارت فرهنگ و ارشاد اسلامی':lang==='en'?'Ministry of Culture and Islamic Guidance':'Министерство культуры и исламской ориентации';
   const mediaLabel=lang==='fa'?'سامانه جامع رسانه‌های کشور':lang==='en'?'National Comprehensive Media System':'Национальная комплексная медиасистема';
-  const footerJournalName=lang==='ru'?'Исследования России и Кавказа':lang==='en'?'Russian and Caucasus Studies (RLS)':'مطالعات روسیه و قفقاز';
+  const footerJournalName=lang==='ru'?'Исследования России и Кавказа (RCS)':lang==='en'?'Russian and Caucasus Studies (RCS)':'مطالعات روسیه و قفقاز (RCS)';
   if(footer){
     footer.innerHTML=`<div class="container rls-footer-inner">
       <div class="rls-footer-main">
         <div class="rls-footer-col"><strong>${footerJournalName}</strong><p>${lang==='ru'?'Научный журнал, выходящий два раза в год':lang==='en'?'Biannual journal':'نشریه علمی دو فصلنامه'}</p></div>
         <div class="rls-footer-col"><p>${lang==='ru'?'Лицензия Министерства № 94254':lang==='en'?'Ministry License No. 94254':'شماره مجوز وزارت فرهنگ و ارشاد اسلامی: 94254'}</p><p>${lang==='ru'?'Дата выдачи лицензии: 2023/07/24':lang==='en'?'License Date: 2023/07/24':'تاریخ مجوز: 1402/05/02'}</p></div>
-        <div class="rls-footer-col"><p>${lang==='ru'?'ISSN: в процессе получения':lang==='en'?'ISSN: Pending':'ISSN: در دست اقدام'}</p><p class="rls-email-line">Email: <a href="mailto:mm.rubin@ut.ac.ir">mm.rubin@ut.ac.ir</a></p><p>© 2026 RLS</p></div>
+        <div class="rls-footer-col"><p>${lang==='ru'?'ISSN: в процессе получения':lang==='en'?'ISSN: Pending':'ISSN: در دست اقدام'}</p><p class="rls-email-line">Email: <a href="mailto:mm.rubin@ut.ac.ir">mm.rubin@ut.ac.ir</a></p><p>© 2026 RCS</p></div>
         <div class="rls-footer-col rls-footer-cc"><a class="rls-cc-badge" href="${root}copyright.html" title="Creative Commons Attribution 4.0 International"><img src="https://licensebuttons.net/l/by/4.0/88x31.png" alt="CC BY 4.0" width="88" height="31" loading="lazy" decoding="async"></a><p><a href="${root}copyright.html">${lang==='ru'?'Лицензия CC BY 4.0':lang==='en'?'CC BY 4.0 License':'مجوز CC BY 4.0'}</a></p></div>
       </div>
       <div class="rls-footer-official-logos">

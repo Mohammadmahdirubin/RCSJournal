@@ -113,6 +113,39 @@ window.renderRLSArticleList = function(targetId, language) {
 };
 
 const initRLS=()=>{
+  // Early, defensive mobile menu handler: bind before the rest of the page enhancements.
+  if(!window.__rcsMobileMenuHandler){
+    window.__rcsMobileMenuHandler=true;
+    document.addEventListener('click',function(e){
+      var button=e.target && e.target.closest ? e.target.closest('.menu-btn') : null;
+      if(!button)return;
+      e.preventDefault();
+      var nav=document.querySelector('.site-header .main-nav');
+      if(!nav)return;
+      var opening=button.getAttribute('aria-expanded')!=='true';
+      button.setAttribute('aria-expanded',String(opening));
+      document.documentElement.classList.toggle('nav-open',opening);
+      document.body.classList.toggle('nav-open',opening);
+      if(opening){
+        nav.style.setProperty('display','flex','important');
+        nav.style.setProperty('position','absolute','important');
+        nav.style.setProperty('top','56px','important');
+        nav.style.setProperty('left','0','important');
+        nav.style.setProperty('right','0','important');
+        nav.style.setProperty('z-index','10000','important');
+        nav.style.setProperty('flex-direction','column','important');
+        nav.style.setProperty('align-items','stretch','important');
+        nav.style.setProperty('max-height','calc(100dvh - 56px)','important');
+        nav.style.setProperty('overflow-y','auto','important');
+        nav.style.setProperty('background','#faf7ec','important');
+        nav.style.setProperty('padding','10px 18px','important');
+        nav.style.setProperty('box-sizing','border-box','important');
+      }else{
+        ['display','position','top','left','right','z-index','flex-direction','align-items','max-height','overflow-y','background','padding','box-sizing'].forEach(function(p){nav.style.removeProperty(p);});
+      }
+    },true);
+  }
+
   // GoatCounter: count article visits under one shared path across FA/EN/RU versions.
   if(!window.goatcounter){
     window.goatcounter={

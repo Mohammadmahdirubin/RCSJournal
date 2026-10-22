@@ -284,12 +284,13 @@ const initRLS=()=>{
   }
 
 
-    style.textContent += `\n/* RCS dropdown visibility fix: keep submenu content visible on desktop and mobile. */
+    const dropdownFixStyle=document.createElement('style');\n    dropdownFixStyle.textContent = `\n/* RCS dropdown visibility fix: keep submenu content visible on desktop and mobile. */
 .site-header .main-nav details.nav-group[open] > .nav-submenu{display:block!important;visibility:visible!important;opacity:1!important;height:auto!important;max-height:none!important;overflow:visible!important}
 .site-header .main-nav details.nav-group[open] > .nav-submenu a{display:block!important;visibility:visible!important;opacity:1!important;color:var(--ink)!important}
 @media(min-width:901px){.site-header,.site-header .header-inner,.site-header .main-nav{overflow:visible!important}.site-header .main-nav details.nav-group[open] > .nav-submenu{position:absolute!important;z-index:9999!important}}
 @media(max-width:900px){.site-header .main-nav details.nav-group[open] > .nav-submenu{position:static!important;width:100%!important;min-width:0!important}}
 `;
+    document.head.appendChild(dropdownFixStyle);
   if(!document.getElementById('rls-runtime-style')){
     const style=document.createElement('style');
     style.id='rls-runtime-style';

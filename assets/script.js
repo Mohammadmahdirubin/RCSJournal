@@ -122,8 +122,7 @@ const initRLS=()=>{
   const asset=name=>root+encodeURI(name);
   const header=document.querySelector('.site-header');
   const nav=document.querySelector('.main-nav');
-  const isMobileUA=/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  const mobile=isMobileUA && Math.min(window.innerWidth||9999, screen.width||9999)<=900;
+  const mobile=window.matchMedia('(max-width: 900px)').matches;
   if(mobile)document.documentElement.classList.add('rls-mobile-mode');
   else document.documentElement.classList.remove('rls-mobile-mode');
 
@@ -256,6 +255,7 @@ const initRLS=()=>{
     nav.id='rcs-mobile-navigation';
     menu.onclick=function(e){
       e.preventDefault();
+      e.stopPropagation();
       const opening=!document.documentElement.classList.contains('nav-open');
       document.documentElement.classList.toggle('nav-open',opening);
       document.body.classList.toggle('nav-open',opening);

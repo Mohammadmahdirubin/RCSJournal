@@ -373,7 +373,7 @@ html.rls-mobile-mode.nav-open .site-header .main-nav>a{display:flex!important}
     const mobileFix=document.createElement('style');
     mobileFix.id='rcs-mobile-navigation-fix';
     mobileFix.textContent=`
-      @media(max-width:900px){
+      @media(max-width:700px){
         .site-header .header-inner .menu-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;position:relative!important;z-index:10002!important;flex:0 0 auto!important}
         .site-header .header-inner .main-nav{display:none!important}
         html.nav-open .site-header .header-inner .main-nav,

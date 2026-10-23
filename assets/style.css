@@ -1398,3 +1398,18 @@ html[lang="fa"] .page-hero p{
  .site-header .menu-btn{display:inline-flex!important}
  .site-header .header-language-switcher{display:block!important;flex:0 0 auto!important;width:auto!important;max-width:95px!important}
 }
+
+
+/* Final desktop navigation enforcement for FA, EN and RU */
+@media(min-width:701px){
+ html .site-header .header-inner .menu-btn{display:none!important}
+ html .site-header .header-inner>.main-nav{display:flex!important;visibility:visible!important;opacity:1!important;position:static!important;inset:auto!important;transform:none!important;flex-direction:row!important;flex-wrap:wrap!important;align-items:center!important;justify-content:flex-end!important;flex:1 1 auto!important;width:auto!important;height:auto!important;max-height:none!important;overflow:visible!important;padding:0!important;margin:0!important;background:transparent!important;box-shadow:none!important}
+ html .site-header .header-inner>.main-nav>a,html .site-header .header-inner>.main-nav>details{display:block!important;visibility:visible!important;opacity:1!important;flex:0 1 auto!important;width:auto!important;max-width:none!important;white-space:normal!important;font-size:clamp(11px,1vw,13px)!important;line-height:1.4!important}
+ html .site-header .header-inner>.main-nav>details>summary{white-space:normal!important;cursor:pointer!important}
+ html .site-header .header-inner>.main-nav .nav-submenu{z-index:10010!important}
+}
+@media(max-width:700px){
+ html .site-header .header-inner .menu-btn{display:inline-flex!important}
+ html .site-header .header-inner>.main-nav{display:none!important}
+ html.nav-open .site-header .header-inner>.main-nav,body.nav-open .site-header .header-inner>.main-nav{display:flex!important}
+}

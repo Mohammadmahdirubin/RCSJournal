@@ -1309,3 +1309,35 @@ html[lang="fa"] .page-hero p{
  html.nav-open .site-header .main-nav details>summary,body.nav-open .site-header .main-nav details>summary{display:block!important;font-size:14px!important;white-space:normal!important;padding:10px 0!important}
  html.nav-open .site-header .main-nav details>.nav-submenu,html.nav-open .site-header .main-nav details[open]>.nav-submenu,body.nav-open .site-header .main-nav details[open]>.nav-submenu{position:static!important;display:block!important;width:100%!important;min-width:0!important;max-width:100%!important;max-height:none!important;box-shadow:none!important;padding:4px 12px!important;background:transparent!important}
 }
+
+
+/* Match the proven RLS header/navigation behavior; override accumulated RCS nav patches. */
+@media(min-width:901px){
+ .site-header{position:sticky!important;top:0!important;z-index:10000!important;overflow:visible!important}
+ .site-header .header-inner{display:flex!important;flex-wrap:nowrap!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;min-height:76px!important;position:relative!important}
+ .site-header .brand{flex:0 1 280px!important;min-width:0!important}
+ .site-header .brand strong{font-size:13px!important;line-height:1.4!important}
+ .site-header .brand small{font-size:9px!important;line-height:1.5!important}
+ .site-header .menu-btn{display:none!important}
+ .site-header .main-nav{display:flex!important;flex:1 1 auto!important;flex-wrap:wrap!important;align-items:center!important;justify-content:flex-end!important;gap:2px 12px!important;min-width:0!important;width:auto!important;order:initial!important;font-size:12px!important}
+ .site-header .main-nav>a{display:block!important;flex:0 1 auto!important;white-space:normal!important;overflow-wrap:anywhere!important;line-height:1.4!important;padding:10px 0!important;text-align:center!important}
+ .site-header .main-nav .nav-submit{padding:8px 10px!important}
+ .site-header .main-nav .language-switcher{width:auto!important;max-width:100%!important}
+}
+@media(max-width:900px){
+ .site-header{position:sticky!important;top:0!important;z-index:10000!important;overflow:visible!important}
+ .site-header .header-inner{position:relative!important;display:flex!important;flex-wrap:nowrap!important;align-items:center!important;justify-content:space-between!important;min-height:76px!important;gap:10px!important}
+ .site-header .brand{min-width:0!important;flex:1 1 auto!important}
+ .site-header .brand-mark{flex:0 0 44px!important;width:44px!important;height:44px!important}
+ .site-header .menu-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:0 0 44px!important;width:44px!important;height:44px!important;padding:6px!important;font-size:25px!important}
+ .site-header .header-inner>.main-nav{display:none!important}
+ html.nav-open .site-header .header-inner>.main-nav,body.nav-open .site-header .header-inner>.main-nav{position:absolute!important;top:100%!important;left:0!important;right:0!important;width:100%!important;max-width:100%!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;gap:0!important;padding:12px 24px!important;background:var(--paper,#faf7ec)!important;border-bottom:1px solid var(--line,#e2d8d5)!important;box-shadow:0 12px 25px rgba(91,23,35,.1)!important;overflow-y:auto!important;max-height:calc(100vh - 76px)!important;z-index:10001!important;box-sizing:border-box!important}
+ html.nav-open .site-header .main-nav>a,body.nav-open .site-header .main-nav>a{display:block!important;width:100%!important;padding:11px 0!important;font-size:14px!important;line-height:1.5!important;white-space:normal!important;text-align:start!important}
+ html.nav-open .site-header .main-nav .nav-submit,body.nav-open .site-header .main-nav .nav-submit{padding:10px 12px!important;margin:5px 0!important;text-align:center!important}
+ html.nav-open .site-header .main-nav .language-switcher,body.nav-open .site-header .main-nav .language-switcher{display:none!important}
+}
+@media(max-width:560px){
+ .site-header .header-inner{min-height:76px!important}
+ .site-header .brand-mark{width:44px!important;height:44px!important;flex-basis:44px!important}
+ html.nav-open .site-header .main-nav,body.nav-open .site-header .main-nav{padding:12px 18px!important;max-height:calc(100vh - 76px)!important}
+}

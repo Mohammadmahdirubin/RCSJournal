@@ -1383,3 +1383,18 @@ html[lang="fa"] .page-hero p{
  .site-header .header-inner>.main-nav{display:none!important}
  html.nav-open .site-header .header-inner>.main-nav,body.nav-open .site-header .header-inner>.main-nav{display:flex!important;flex-direction:column!important;align-items:stretch!important;position:absolute!important;top:100%!important;left:0!important;right:0!important;width:100%!important;max-width:100%!important}
 }
+
+
+/* Restore full-size journal banner on mobile in all language versions */
+@media(max-width:700px){
+ .site-header>.rls-site-banner{display:block!important;width:100%!important;max-width:100%!important;margin:0!important;padding:0!important;overflow:hidden!important;line-height:0!important}
+ .site-header>.rls-site-banner>a{display:block!important;width:100%!important;line-height:0!important}
+ .site-header>.rls-site-banner img{display:block!important;width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important;margin:0!important}
+ .site-header .header-inner{min-height:58px!important}
+ .site-header .brand{display:flex!important;flex:1 1 auto!important;min-width:0!important}
+ .site-header .brand strong{font-size:13px!important;line-height:1.4!important}
+ .site-header .brand small{font-size:9px!important;line-height:1.5!important}
+ .site-header .brand-mark{width:44px!important;height:44px!important;flex:0 0 44px!important}
+ .site-header .menu-btn{display:inline-flex!important}
+ .site-header .header-language-switcher{display:block!important;flex:0 0 auto!important;width:auto!important;max-width:95px!important}
+}

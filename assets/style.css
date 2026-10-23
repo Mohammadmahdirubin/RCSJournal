@@ -1259,3 +1259,12 @@ html[lang="fa"] .page-hero p{
  html.nav-open .site-header .main-nav details.nav-group,body.nav-open .site-header .main-nav details.nav-group{width:100%!important}
  html.nav-open .site-header .main-nav details.nav-group>.nav-submenu,html.nav-open .site-header .main-nav details.nav-group[open]>.nav-submenu,body.nav-open .site-header .main-nav details.nav-group[open]>.nav-submenu{position:static!important;width:100%!important;min-width:0!important;max-height:none!important;box-shadow:none!important;margin:2px 0 7px!important;padding:3px 10px!important;border:0!important;border-inline-start:2px solid var(--accent3)!important;background:transparent!important}
 }
+
+/* Desktop navigation fix: keep English/Russian menu labels from overlapping when the menu is wider than the header. */
+@media(min-width:901px){
+  .header-inner{flex-wrap:wrap!important;row-gap:0!important;padding-top:8px;padding-bottom:8px}
+  .main-nav{display:flex!important;flex:1 1 100%!important;flex-wrap:wrap!important;justify-content:flex-end!important;gap:4px 18px!important;width:100%!important;min-width:0!important}
+  .main-nav a{white-space:normal!important;line-height:1.45!important;padding:8px 0!important;max-width:100%;overflow-wrap:normal}
+  .main-nav .nav-submit{padding:8px 14px!important}
+  .header-language-switcher{margin-inline-start:auto}
+}

@@ -122,7 +122,7 @@ const initRLS=()=>{
   const asset=name=>root+encodeURI(name);
   const header=document.querySelector('.site-header');
   const nav=document.querySelector('.main-nav');
-  const mobile=window.matchMedia('(max-width: 900px)').matches;
+  const mobile=window.matchMedia('(max-width: 700px)').matches;
   if(mobile)document.documentElement.classList.add('rls-mobile-mode');
   else document.documentElement.classList.remove('rls-mobile-mode');
 

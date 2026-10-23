@@ -1341,3 +1341,26 @@ html[lang="fa"] .page-hero p{
  .site-header .brand-mark{width:44px!important;height:44px!important;flex-basis:44px!important}
  html.nav-open .site-header .main-nav,body.nav-open .site-header .main-nav{padding:12px 18px!important;max-height:calc(100vh - 76px)!important}
 }
+
+
+/* Mobile layout correction based on real-device screenshot */
+@media(max-width:700px){
+ html,body{width:100%!important;max-width:100%!important;overflow-x:hidden!important}
+ .container{width:100%!important;max-width:100%!important;padding-left:18px!important;padding-right:18px!important;margin-left:auto!important;margin-right:auto!important}
+ .hero,.page-hero,.section,.dark-section{width:100%!important;max-width:100%!important}
+ .hero{padding:30px 0!important}
+ .hero-grid{display:grid!important;grid-template-columns:minmax(0,1fr)!important;width:100%!important;gap:22px!important}
+ .hero-grid>*{width:100%!important;max-width:100%!important;min-width:0!important;grid-column:1/-1!important}
+ .hero-brand-block,.hero-grid>div:first-child{width:100%!important;max-width:100%!important;min-width:0!important}
+ .hero h1{white-space:normal!important;font-size:clamp(25px,7vw,34px)!important;line-height:1.35!important}
+ .hero .lead,.journal-card,.notice{width:100%!important;max-width:100%!important;min-width:0!important}
+ .feature-grid,.policy-grid,.card-grid,.footer-grid,.form-grid,.cta-grid{display:grid!important;grid-template-columns:minmax(0,1fr)!important;width:100%!important;max-width:100%!important;gap:16px!important}
+ .feature-grid>*,.policy-grid>*,.card-grid>*,.footer-grid>*,.form-grid>*,.cta-grid>*{min-width:0!important;width:100%!important;max-width:100%!important}
+ .section-head{width:100%!important;max-width:100%!important;min-width:0!important}
+ .section-head h2,.content h2,.content h3{overflow-wrap:anywhere!important;word-break:normal!important}
+ .content,.content>*{max-width:100%!important;min-width:0!important}
+ .actions{display:flex!important;flex-wrap:wrap!important;gap:10px!important}
+ .academic-table{min-width:0!important;width:100%!important}
+ .table-wrap{max-width:100%!important;overflow-x:auto!important}
+ .site-header .header-inner{width:100%!important}
+}
